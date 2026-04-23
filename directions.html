@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Направления — Империя Танца</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { theme: { extend: { colors: { base: "#0f051a", textSoft: "#cab6db", neon: "#d946ef" } } } };
+    </script>
+  </head>
+  <body class="bg-base text-white">
+    <div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div><div class="bg-noise"></div>
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-base/80 backdrop-blur-md">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+        <a href="./index.html" class="text-sm font-bold tracking-[0.14em]">ИМПЕРИЯ ТАНЦА</a>
+        <nav class="hidden items-center gap-5 text-sm md:flex">
+          <a href="./directions.html" class="nav-link">Направления</a><a href="./trainers.html" class="nav-link">Тренеры</a><a href="./schedule.html" class="nav-link">Расписание</a><a href="./prices.html" class="nav-link">Цены</a><a href="./gallery.html" class="nav-link">Галерея</a><a href="./contacts.html" class="nav-link">Контакты</a>
+        </nav>
+      </div>
+    </header>
+    <main class="relative z-10 mx-auto max-w-7xl px-4 pb-12 pt-8">
+      <h1 class="text-3xl font-black md:text-5xl">Направления занятий</h1>
+      <p class="mt-3 max-w-3xl text-sm text-textSoft">В студии проходят занятия Pole Dance, Exotic Pole Dance, Стрип-пластика, Стретчинг, Pole Art, Pole Sport, Erotic Dance, Private Dance и индивидуальные уроки.</p>
+      <section class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="card-surface p-5"><h2 class="text-xl font-bold">Pole Dance</h2><p class="mt-2 text-sm text-textSoft">Силовые тренировки на пилоне, акробатика и трюки в верхней части пилона.</p></article>
+        <article class="card-surface p-5"><h2 class="text-xl font-bold">Exotic Pole Dance</h2><p class="mt-2 text-sm text-textSoft">Танцевальные связки в нижней части пилона и в партере, занятия на каблуках.</p></article>
+        <article class="card-surface p-5"><h2 class="text-xl font-bold">Стрип-пластика</h2><p class="mt-2 text-sm text-textSoft">Женственные и чувственные связки, развитие пластики и музыкальности.</p></article>
+        <article class="card-surface p-5"><h2 class="text-xl font-bold">Стретчинг</h2><p class="mt-2 text-sm text-textSoft">Растяжка и гибкость для отличного самочувствия и шпагата.</p></article>
+        <article class="card-surface p-5"><h2 class="text-xl font-bold">Pole Art</h2><p class="mt-2 text-sm text-textSoft">Танец на пилоне с элементами хореографии, нежный и артистичный стиль.</p></article>
+        <article class="card-surface p-5"><h2 class="text-xl font-bold">Индивидуальные занятия</h2><p class="mt-2 text-sm text-textSoft">Персональная тренировка с тренером и подбор программы под вашу цель.</p></article>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Империя Танца — современный SPA</title>
+    <meta
+      name="description"
+      content="Автономный SPA-сайт студии танцев в Минске: направления, расписание, цены, галерея и контакты."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              base: "#0f051a",
+              card: "#1f0b2f",
+              neon: "#d946ef",
+              violet: "#7c3aed",
+              textSoft: "#cab6db"
+            },
+            boxShadow: {
+              glow: "0 10px 36px rgba(217, 70, 239, .35)"
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+  <body class="bg-base text-white">
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-noise"></div>
+
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-base/80 backdrop-blur-md">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+        <a href="./index.html" class="text-sm font-bold tracking-[0.14em]">ИМПЕРИЯ ТАНЦА</a>
+        <button
+          id="menuBtn"
+          class="rounded-lg border border-white/20 px-4 py-2 text-xs font-semibold md:hidden"
+          aria-label="Открыть меню"
+        >
+          Меню
+        </button>
+        <nav class="hidden items-center gap-5 text-sm md:flex">
+          <a href="./directions.html" class="nav-link">Направления</a>
+          <a href="./trainers.html" class="nav-link">Тренеры</a>
+          <a href="./schedule.html" class="nav-link">Расписание</a>
+          <a href="./prices.html" class="nav-link">Цены</a>
+          <a href="./gallery.html" class="nav-link">Галерея</a>
+          <a href="./contacts.html" class="nav-link">Контакты</a>
+        </nav>
+      </div>
+      <nav id="mobileMenu" class="hidden border-t border-white/10 px-4 py-4 md:hidden">
+        <div class="grid gap-3 text-sm">
+          <a href="./directions.html" class="nav-link">Направления</a>
+          <a href="./trainers.html" class="nav-link">Тренеры</a>
+          <a href="./schedule.html" class="nav-link">Расписание</a>
+          <a href="./prices.html" class="nav-link">Цены</a>
+          <a href="./gallery.html" class="nav-link">Галерея</a>
+          <a href="./contacts.html" class="nav-link">Контакты</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="relative z-10">
+      <section id="hero" class="mx-auto grid max-w-7xl gap-8 px-4 pb-12 pt-10 md:grid-cols-2 md:pt-16">
+        <article class="reveal">
+          <p class="mb-4 text-xs uppercase tracking-[0.25em] text-neon">Студия танцев в Минске</p>
+          <h1 class="text-4xl font-black leading-tight md:text-6xl">
+            Pole Dance, Exotic Pole Dance, Стрип-пластика, Стретчинг
+          </h1>
+          <p class="mt-5 max-w-xl text-sm leading-relaxed text-textSoft md:text-base">
+            Научим танцевать с нуля. Удобное расписание с 10:00 до 23:00, комфортные цены, современные залы и атмосфера, в которую хочется возвращаться.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="tel:+375295760055" class="cta-main">+375 29 576 00 55</a>
+            <a href="tel:+375445760055" class="cta-ghost">+375 44 576 00 55</a>
+          </div>
+        </article>
+
+        <article class="reveal card-surface p-4">
+          <img src="https://imperiatanca.by/d/shkola-tancev-na-pilone-imperija.jpg" alt="Империя Танца" class="h-full min-h-[260px] w-full rounded-2xl object-cover" />
+        </article>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-4 py-10">
+        <div class="mb-6 flex items-end justify-between reveal">
+          <h2 class="text-2xl font-black md:text-4xl">Направления</h2>
+          <a href="./directions.html" class="text-xs uppercase tracking-[0.2em] text-textSoft">Смотреть все</a>
+        </div>
+        <div id="directionsGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-4 py-10">
+        <div class="mb-6 reveal">
+          <h2 class="text-2xl font-black md:text-4xl">Расписание</h2>
+          <p class="mt-2 text-sm text-textSoft">
+            Первая тренировка в любой группе от 10 руб. или бесплатно при покупке абонемента в день пробного занятия.
+          </p>
+        </div>
+        <div id="scheduleGrid" class="grid gap-3 md:grid-cols-2"></div>
+        <a href="./schedule.html" class="mt-4 inline-flex cta-ghost">Полное расписание</a>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-4 py-10">
+        <div class="mb-6 reveal">
+          <h2 class="text-2xl font-black md:text-4xl">Цены</h2>
+          <p class="mt-2 text-sm text-textSoft">
+            Цены вшиты в проект и не зависят от внешних источников.
+          </p>
+        </div>
+        <div id="pricesGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+        <a href="./prices.html" class="mt-4 inline-flex cta-ghost">Полный прайс</a>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-4 py-10">
+        <div class="mb-6 reveal">
+          <h2 class="text-2xl font-black md:text-4xl">Галерея</h2>
+          <p class="mt-2 text-sm text-textSoft">
+            Плейсхолдеры для локальных фото. Подмените файлы в папке `./assets/`.
+          </p>
+        </div>
+        <div id="galleryGrid" class="grid grid-cols-2 gap-3 md:grid-cols-4"></div>
+        <a href="./gallery.html" class="mt-4 inline-flex cta-ghost">Открыть галерею</a>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-4 py-10">
+        <h2 class="reveal mb-6 text-2xl font-black md:text-4xl">Контакты</h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          <article class="card-surface reveal p-5">
+            <h3 class="text-lg font-bold">ООО "Империя Танца"</h3>
+            <p class="mt-3 text-sm text-textSoft">Минск, Кальварийская, 25-205, 20 метров от м. Молодежной</p>
+            <p class="mt-1 text-sm text-textSoft">Пн-Сб: 11:00-23:00, Воскресенье: выходной</p>
+            <p class="mt-1 text-sm text-textSoft">УНП: 192489853</p>
+            <div class="mt-4 grid gap-2 text-sm">
+              <a class="nav-link" href="tel:+375295760055">+375 29 576 00 55 (МТС)</a>
+              <a class="nav-link" href="tel:+375445760055">+375 44 576 00 55 (А1)</a>
+            </div>
+          </article>
+          <article class="card-surface reveal p-5">
+            <h3 class="text-lg font-bold">Запишись на занятие</h3>
+            <p class="mt-3 text-sm text-textSoft">Приходи на первый урок в студии и совершенствуйся с нами.</p>
+            <form class="mt-4 grid gap-3">
+              <input class="input-field" placeholder="Имя" type="text" />
+              <input class="input-field" placeholder="Телефон" type="tel" />
+              <button class="cta-main w-full" type="button">Хочу начать</button>
+            </form>
+          </article>
+        </div>
+        <a href="./contacts.html" class="mt-4 inline-flex cta-ghost">Страница контактов</a>
+      </section>
+
+      <section id="socials" class="mx-auto max-w-7xl px-4 pb-12">
+        <article class="card-surface reveal p-5">
+          <h2 class="text-lg font-bold">Мы в социальных сетях</h2>
+          <div class="mt-4 flex flex-wrap gap-2 text-sm">
+            <a class="cta-ghost" href="https://www.instagram.com/imperiatanca.by/" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="cta-ghost" href="viber://add?number=375445760055">Viber</a>
+            <a class="cta-ghost" href="https://www.tiktok.com/@imperiatanca.by" target="_blank" rel="noreferrer">TikTok</a>
+            <a class="cta-ghost" href="https://www.youtube.com/channel/UCENKS2QtXndmy4lzYcKWfMw" target="_blank" rel="noreferrer">YouTube</a>
+            <a class="cta-ghost" href="https://t.me/imperiatanca" target="_blank" rel="noreferrer">Telegram</a>
+            <a class="cta-ghost" href="https://vk.com/imperia_tanca_minsk" target="_blank" rel="noreferrer">VK</a>
+            <a class="cta-ghost" href="https://wa.me/375445760055" target="_blank" rel="noreferrer">WhatsApp</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="relative z-10 border-t border-white/10 py-6">
+      <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 text-xs text-textSoft md:flex-row md:items-center md:justify-between">
+        <p>Copyright © 2015 - 2026 • ООО "Империя Танца"</p>
+        <p>SPA версия • Mobile First • Автономный проект</p>
+      </div>
+    </footer>
+
+    <script id="appData" type="application/json">
+      {
+        "directions": [
+          {
+            "title": "Pole Dance",
+            "desc": "Силовая нагрузка, акробатика и хореография. Подходит девушкам и парням.",
+            "tag": "Спорт + танец"
+          },
+          {
+            "title": "Exotic Pole Dance",
+            "desc": "Связки в нижней части пилона и партере. Танцуем на каблуках.",
+            "tag": "Драйв и пластика"
+          },
+          {
+            "title": "Стрип-пластика",
+            "desc": "Женственное направление с акцентом на плавность, музыкальность и настроение.",
+            "tag": "Чувственность"
+          },
+          {
+            "title": "Стретчинг",
+            "desc": "Гибкость, шпагат, здоровье спины и тонус мышц.",
+            "tag": "Баланс тела"
+          },
+          {
+            "title": "Pole Art",
+            "desc": "Танец на пилоне с хореографическими и артистическими элементами.",
+            "tag": "Эстетика"
+          },
+          {
+            "title": "Индивидуальные тренировки",
+            "desc": "Персональные занятия с тренером в удобное время и под ваши цели.",
+            "tag": "Личный формат"
+          }
+        ],
+        "schedule": [
+          { "day": "Понедельник", "slots": "18:00 Pole Dance • 19:30 Exotic Pole • 21:00 Стретчинг" },
+          { "day": "Вторник", "slots": "17:30 Стрип-пластика • 19:00 Pole Art • 20:30 Exotic Pole" },
+          { "day": "Среда", "slots": "18:00 Pole Dance • 19:30 Стретчинг • 21:00 Frame Up Strip" },
+          { "day": "Четверг", "slots": "17:30 Exotic Pole • 19:00 Стрип-пластика • 20:30 Pole Sport" },
+          { "day": "Пятница", "slots": "18:00 Pole Dance • 19:30 Pole Art • 21:00 Стретчинг" },
+          { "day": "Суббота", "slots": "12:00 Стретчинг • 14:00 Exotic Pole • 16:00 Индивидуальные" }
+        ],
+        "prices": [
+          { "title": "Пробное", "value": "1 час — 15 руб • 1.5 часа — 20 руб" },
+          { "title": "Разовое", "value": "1 час — 30 руб • 1.5 часа — 35 руб" },
+          { "title": "Лайт (4 занятия)", "value": "1 час — 100 руб • 1.5 часа — 115 руб" },
+          { "title": "Стандарт (8 занятий)", "value": "1 час — 140 руб • 1.5 часа — 175 руб" },
+          { "title": "Гибкий (8 занятий)", "value": "1 час — 160 руб • 1.5 часа — 195 руб" },
+          { "title": "Безлимит", "value": "1 мес — 290 руб • 2 мес — 530 руб • 3 мес — 710 руб" }
+        ],
+        "gallery": [
+          "https://imperiatanca.by/d/imperia-stars-06-24_390.jpg",
+          "https://imperiatanca.by/d/11-12-2024-imperiatanca-by_119.jpg",
+          "https://imperiatanca.by/d/22-12-2024-imperiatanca-43.jpg",
+          "https://imperiatanca.by/d/imperiatanca-party-06-2025-71.jpg",
+          "https://imperiatanca.by/d/imperiatanca-party-2025-exotic-pole-dance_49.jpg",
+          "https://imperiatanca.by/d/studiya-imperiya-tanca-053092024.jpg",
+          "https://imperiatanca.by/d/417-pole-dance-166.jpg",
+          "https://imperiatanca.by/d/425-imperia-tanca-429.jpg"
+        ]
+      }
+    </script>
+
+    <script>
+      const appData = JSON.parse(document.getElementById("appData").textContent);
+
+      const renderCards = (containerId, items, template) => {
+        const container = document.getElementById(containerId);
+        container.innerHTML = items.map(template).join("");
+      };
+
+      renderCards(
+        "directionsGrid",
+        appData.directions,
+        (item) => `
+          <article class="card-surface reveal direction-card p-5">
+            <p class="text-xs uppercase tracking-[0.15em] text-neon">${item.tag}</p>
+            <h3 class="mt-2 text-xl font-bold">${item.title}</h3>
+            <p class="mt-3 text-sm text-textSoft">${item.desc}</p>
+          </article>
+        `
+      );
+
+      renderCards(
+        "scheduleGrid",
+        appData.schedule,
+        (item) => `
+          <article class="card-surface reveal p-5">
+            <h3 class="text-lg font-bold">${item.day}</h3>
+            <p class="mt-2 text-sm text-textSoft">${item.slots}</p>
+          </article>
+        `
+      );
+
+      renderCards(
+        "pricesGrid",
+        appData.prices,
+        (item) => `
+          <article class="card-surface reveal p-5">
+            <h3 class="text-lg font-bold">${item.title}</h3>
+            <p class="mt-2 text-sm text-textSoft">${item.value}</p>
+          </article>
+        `
+      );
+
+      renderCards(
+        "galleryGrid",
+        appData.gallery,
+        (src, idx) => `
+          <article class="reveal overflow-hidden rounded-xl">
+            <img src="${src}" alt="Галерея ${idx + 1}" class="h-40 w-full object-cover md:h-56" />
+          </article>
+        `
+      );
+
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
+      mobileMenu.querySelectorAll("a").forEach((link) =>
+        link.addEventListener("click", () => mobileMenu.classList.add("hidden"))
+      );
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("show");
+          });
+        },
+        { threshold: 0.18 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
