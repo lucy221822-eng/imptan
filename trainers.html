@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Тренеры — Империя Танца</title>
-    <meta name="description" content="Преподаватели студии Империя Танца в Минске." />
+    <title>Студия танцев в Минске | Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех.</title>
+    <meta
+      name="description"
+      content="Студия танцев в Минске. Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех."
+    />
     <link rel="stylesheet" href="./styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,7 +16,8 @@
           extend: {
             colors: {
               base: "#0f051a",
-              textSoft: "#cab6db"
+              textSoft: "#cab6db",
+              neon: "#d946ef"
             }
           }
         }
@@ -27,9 +31,16 @@
 
     <header class="sticky top-0 z-50 border-b border-white/10 bg-base/80 backdrop-blur-md">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-        <a href="./index.html" class="text-sm font-bold tracking-[0.14em]">ИМПЕРИЯ ТАНЦА</a>
+        <a href="./index.html" class="flex items-center text-sm font-bold tracking-[0.14em]">
+          <svg class="mr-3 h-7 w-7 text-neon drop-shadow-[0_0_8px_rgba(217,70,239,0.6)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7Z"/>
+            <path d="M5 20h14"/>
+          </svg>
+          <span class="text-white neon-glow-text-white">ИМПЕРИЯ ТАНЦА</span>
+        </a>
         <button id="menuBtn" class="rounded-lg border border-white/20 px-4 py-2 text-xs font-semibold md:hidden">Меню</button>
         <nav class="hidden items-center gap-5 text-sm md:flex">
+          <a href="./index.html" class="nav-link">Главная</a>
           <a href="./directions.html" class="nav-link">Направления</a>
           <a href="./trainers.html" class="nav-link">Тренеры</a>
           <a href="./schedule.html" class="nav-link">Расписание</a>
@@ -56,9 +67,9 @@
 
     <main class="relative z-10 mx-auto max-w-7xl px-4 pb-12 pt-8">
       <section class="reveal">
-        <p class="text-xs uppercase tracking-[0.2em] text-neon">Наша команда</p>
-        <h1 class="mt-2 text-3xl font-black md:text-5xl">Преподаватели студии</h1>
-        <p class="mt-4 max-w-3xl text-sm text-textSoft">
+        <p class="text-xs uppercase tracking-[0.2em] text-neon neon-glow-text">Наша команда</p>
+        <h1 class="mt-2 text-3xl font-black md:text-5xl neon-glow-text-white">Преподаватели студии</h1>
+        <p class="mt-4 max-w-3xl text-sm text-textSoft neon-glow-text-violet">
           Все инструкторы студии — танцоры с насыщенным опытом работы, постоянно посещают тренинги и мастер-классы. Индивидуальный подход к каждому ученику — обязательная часть обучения.
         </p>
       </section>
@@ -66,63 +77,65 @@
       <section class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <article class="card-surface reveal p-5">
           <img src="https://imperiatanca.by/d/pole-trener-dance-2.jpg" alt="Милана Орлова" class="mb-4 h-44 w-full rounded-xl object-cover" />
-          <h2 class="text-xl font-bold">Милана Орлова</h2>
-          <p class="text-sm text-textSoft">Основатель студии.</p>
+          <h2 class="text-xl font-bold neon-glow-text-white">Милана Орлова</h2>
+          <p class="text-xs text-neon uppercase tracking-wider mb-2 neon-glow-text">Основатель студии</p>
+          <p class="text-sm text-textSoft leading-relaxed neon-glow-text-violet">Инструктор по Pole Dance, Exotic, Стрип-пластике и Стретчингу. Имеет диплом инструктора и сертификаты международного уровня (3 степень МОСТП, 2 уровень МООТПФ).</p>
         </article>
         <article class="card-surface reveal p-5">
           <img src="https://imperiatanca.by/d/402-imperia-tanca-24.jpg" alt="Люся Корнеевец" class="mb-4 h-44 w-full rounded-xl object-cover" />
-          <h2 class="text-xl font-bold">Люся Корнеевец</h2>
-          <p class="text-sm text-textSoft">Тренер и сооснователь студии.</p>
+          <h2 class="text-xl font-bold neon-glow-text-white">Люся Корнеевец</h2>
+          <p class="text-xs text-neon uppercase tracking-wider mb-2 neon-glow-text">Сооснователь студии</p>
+          <p class="text-sm text-textSoft leading-relaxed neon-glow-text-violet">Тренер по направлениям: Pole Dance, Exotic Pole Dance, Pole Sport, Pole Art, Стрип-пластика и Стретчинг. Проводит индивидуальные занятия.</p>
         </article>
         <article class="card-surface reveal p-5">
           <img src="https://imperiatanca.by/d/exotic-pole-dance-225-158.jpg" alt="Диана Свиридова" class="mb-4 h-44 w-full rounded-xl object-cover" />
-          <h2 class="text-xl font-bold">Диана Свиридова</h2>
-          <p class="text-sm text-textSoft">Тренер.</p>
-        </article>
-        <article class="card-surface reveal p-5">
-          <img src="https://imperiatanca.by/d/imperia-tanca-trener-dance-64.jpg" alt="Светлана Роткович" class="mb-4 h-44 w-full rounded-xl object-cover" />
-          <h2 class="text-xl font-bold">Светлана Роткович</h2>
-          <p class="text-sm text-textSoft">Тренер. Сертифицированный инструктор по strip-dance и exotic pole dance.</p>
-        </article>
-        <article class="card-surface reveal p-5">
-          <img src="https://imperiatanca.by/d/imperia-tanca-minsk-stripplastic-49.jpg" alt="Анна Орлова" class="mb-4 h-44 w-full rounded-xl object-cover" />
-          <h2 class="text-xl font-bold">Анна Орлова</h2>
-          <p class="text-sm text-textSoft">Тренер.</p>
+          <h2 class="text-xl font-bold neon-glow-text-white">Диана Свиридова</h2>
+          <p class="text-xs text-neon uppercase tracking-wider mb-2 neon-glow-text">Тренер</p>
+          <p class="text-sm text-textSoft leading-relaxed neon-glow-text-violet">Специализируется на Стрип-пластике и Стретчинге. Проводит эффективные индивидуальные тренировки для развития гибкости и пластики.</p>
         </article>
         <article class="card-surface reveal p-5">
           <img src="https://imperiatanca.by/d/exotic-pole-minks-trener-87.jpg" alt="Александра Посканенкова" class="mb-4 h-44 w-full rounded-xl object-cover" />
-          <h2 class="text-xl font-bold">Александра Посканенкова</h2>
-          <p class="text-sm text-textSoft">Тренер.</p>
+          <h2 class="text-xl font-bold neon-glow-text-white">Александра Посканенкова</h2>
+          <p class="text-xs text-neon uppercase tracking-wider mb-2 neon-glow-text">Тренер</p>
+          <p class="text-sm text-textSoft leading-relaxed neon-glow-text-violet">Инструктор по Pole Dance, Exotic, Pole Sport, Art и Стретчингу. Мастер акробатики на пилоне и индивидуального подхода.</p>
+        </article>
+        <article class="card-surface reveal p-5">
+          <img src="https://imperiatanca.by/d/imperia-tanca-minsk-stripplastic-49.jpg" alt="Анна Орлова" class="mb-4 h-44 w-full rounded-xl object-cover" />
+          <h2 class="text-xl font-bold neon-glow-text-white">Анна Орлова</h2>
+          <p class="text-xs text-neon uppercase tracking-wider mb-2 neon-glow-text">Тренер</p>
+          <p class="text-sm text-textSoft leading-relaxed neon-glow-text-violet">Преподает Exotic Pole Dance, Стрип-пластику, Erotic Dance и Private Dance. Помогает раскрыть чувственность через танец.</p>
+        </article>
+        <article class="card-surface reveal p-5">
+          <img src="https://imperiatanca.by/d/imperia-tanca-trener-dance-64.jpg" alt="Светлана Роткович" class="mb-4 h-44 w-full rounded-xl object-cover" />
+          <h2 class="text-xl font-bold neon-glow-text-white">Светлана Роткович</h2>
+          <p class="text-xs text-neon uppercase tracking-wider mb-2 neon-glow-text">Тренер</p>
+          <p class="text-sm text-textSoft leading-relaxed neon-glow-text-violet">Призер чемпионатов (2 место Zero Gravity 2023, Best CHOREO "Жара" 2023). Сертифицированный инструктор по Strip-dance и Exotic Pole Dance.</p>
         </article>
         <article class="card-surface reveal p-5">
           <img src="https://imperiatanca.by/d/317-pole-danca-imperia-tanca-12.jpg" alt="Ирина Шумик" class="mb-4 h-44 w-full rounded-xl object-cover" />
-          <h2 class="text-xl font-bold">Ирина Шумик</h2>
-          <p class="text-sm text-textSoft">Тренер: Pole Dance, Exotic Pole Dance, Pole Sport, индивидуальные занятия.</p>
-        </article>
-        <article class="card-surface reveal p-5">
-          <img src="https://imperiatanca.by/d/343-stripplastic-imperiatanca-41.jpg" alt="Эля Кускова" class="mb-4 h-44 w-full rounded-xl object-cover" />
-          <h2 class="text-xl font-bold">Эля Кускова</h2>
-          <p class="text-sm text-textSoft">Тренер.</p>
+          <h2 class="text-xl font-bold neon-glow-text-white">Ирина Шумик</h2>
+          <p class="text-xs text-neon uppercase tracking-wider mb-2 neon-glow-text">Тренер</p>
+          <p class="text-sm text-textSoft leading-relaxed neon-glow-text-violet">Обладатель награды "Best Technique" (Zero Gravity 2024). Прошла обучение в My Pole Space и курсы по актерскому мастерству.</p>
         </article>
         <article class="card-surface reveal p-5">
           <img src="https://imperiatanca.by/d/419-exotic-pole-dance-63.jpg" alt="Кристина Кислякова" class="mb-4 h-44 w-full rounded-xl object-cover" />
-          <h2 class="text-xl font-bold">Кристина Кислякова</h2>
-          <p class="text-sm text-textSoft">Тренер. Участница и призер профильных чемпионатов.</p>
+          <h2 class="text-xl font-bold neon-glow-text-white">Кристина Кислякова</h2>
+          <p class="text-xs text-neon uppercase tracking-wider mb-2 neon-glow-text">Тренер</p>
+          <p class="text-sm text-textSoft leading-relaxed neon-glow-text-violet">Призер Pole Doll 2023 (2 место). Участница чемпионатов Pole Angeles, Zero Gravity и Pulse. Инструктор по танцу на пилоне.</p>
+        </article>
+        <article class="card-surface reveal p-5">
+          <img src="https://imperiatanca.by/d/343-stripplastic-imperiatanca-41.jpg" alt="Эля Кускова" class="mb-4 h-44 w-full rounded-xl object-cover" />
+          <h2 class="text-xl font-bold neon-glow-text-white">Эля Кускова</h2>
+          <p class="text-xs text-neon uppercase tracking-wider mb-2 neon-glow-text">Тренер</p>
+          <p class="text-sm text-textSoft leading-relaxed neon-glow-text-violet">Универсальный инструктор: Pole Dance (Sport/Art), Exotic, Стрип-пластика и Стретчинг. Вдохновляет учеников на новые достижения.</p>
         </article>
       </section>
     </main>
-
-    <script>
-      const menuBtn = document.getElementById("menuBtn");
-      const mobileMenu = document.getElementById("mobileMenu");
-      menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
-      mobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => mobileMenu.classList.add("hidden")));
-
-      const observer = new IntersectionObserver(
-        (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("show")),
-        { threshold: 0.12 }
-      );
-      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-    </script>
+    <footer class="relative z-10 border-t border-white/10 py-6">
+      <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 text-xs text-textSoft md:flex-row md:items-center md:justify-between">
+        <p>Copyright © 2015 - 2026 • ООО "Империя Танца"</p>
+      </div>
+    </footer>
+    <script src="./main.js"></script>
   </body>
 </html>

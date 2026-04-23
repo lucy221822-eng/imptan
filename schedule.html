@@ -3,16 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Расписание — Империя Танца</title>
+    <title>Студия танцев в Минске | Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех.</title>
+    <meta
+      name="description"
+      content="Студия танцев в Минске. Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех."
+    />
     <link rel="stylesheet" href="./styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={theme:{extend:{colors:{base:"#0f051a",textSoft:"#cab6db"}}}};</script>
+    <script>tailwind.config={theme:{extend:{colors:{base:"#0f051a",textSoft:"#cab6db",neon:"#d946ef"}}}};</script>
   </head>
   <body class="bg-base text-white">
     <div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div><div class="bg-noise"></div>
-    <header class="sticky top-0 z-50 border-b border-white/10 bg-base/80 backdrop-blur-md"><div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3"><a href="./index.html" class="text-sm font-bold tracking-[0.14em]">ИМПЕРИЯ ТАНЦА</a><nav class="hidden items-center gap-5 text-sm md:flex"><a href="./directions.html" class="nav-link">Направления</a><a href="./trainers.html" class="nav-link">Тренеры</a><a href="./schedule.html" class="nav-link">Расписание</a><a href="./prices.html" class="nav-link">Цены</a><a href="./gallery.html" class="nav-link">Галерея</a><a href="./sale.html" class="nav-link">Акции</a><a href="./bonus.html" class="nav-link">Бонусная карта</a><a href="./contacts.html" class="nav-link">Контакты</a></nav></div></header>
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-base/80 backdrop-blur-md">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+        <a href="./index.html" class="flex items-center text-sm font-bold tracking-[0.14em]">
+          <svg class="mr-3 h-7 w-7 text-neon drop-shadow-[0_0_8px_rgba(217,70,239,0.6)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7Z"/>
+            <path d="M5 20h14"/>
+          </svg>
+          <span class="text-white neon-glow-text-white">ИМПЕРИЯ ТАНЦА</span>
+        </a><nav class="hidden items-center gap-5 text-sm md:flex">
+          <a href="./index.html" class="nav-link">Главная</a>
+          <a href="./directions.html" class="nav-link">Направления</a><a href="./trainers.html" class="nav-link">Тренеры</a><a href="./schedule.html" class="nav-link">Расписание</a><a href="./prices.html" class="nav-link">Цены</a><a href="./gallery.html" class="nav-link">Галерея</a><a href="./sale.html" class="nav-link">Акции</a><a href="./bonus.html" class="nav-link">Бонусная карта</a><a href="./contacts.html" class="nav-link">Контакты</a>
+        </nav></div></header>
     <main class="relative z-10 mx-auto max-w-7xl px-4 pb-12 pt-8">
-      <h1 class="text-3xl font-black md:text-5xl">Расписание занятий</h1>
+      <h1 class="text-3xl font-black md:text-5xl neon-glow-text-white">Расписание занятий</h1>
       <p class="mt-3 text-sm text-textSoft">Предварительная запись обязательна. Прием звонков: ПН-СБ 11:00-23:00. Первая тренировка от 10 руб. или бесплатно при покупке абонемента в день пробного занятия.</p>
       <section class="mt-8 card-surface p-3 md:p-5">
         <div class="mb-4 flex flex-wrap items-center gap-2 text-xs text-textSoft">
@@ -21,187 +36,188 @@
           <span class="rounded-full border border-white/20 px-3 py-1">11:00–23:00</span>
         </div>
         <div class="overflow-x-auto rounded-xl border border-white/10">
-          <table class="min-w-[1180px] w-full border-collapse text-sm">
+          <table class="w-full border-collapse text-sm">
             <thead>
               <tr class="bg-white/5 text-left">
-                <th class="p-3 font-semibold">Время</th>
-                <th class="p-3 font-semibold">Пн</th>
-                <th class="p-3 font-semibold">Вт</th>
-                <th class="p-3 font-semibold">Ср</th>
-                <th class="p-3 font-semibold">Чт</th>
-                <th class="p-3 font-semibold">Пт</th>
-                <th class="p-3 font-semibold">Сб</th>
+                <th class="p-2 md:p-3 font-semibold sticky left-0 bg-base z-20 border-r border-white/10">Время</th>
+                <th class="p-2 md:p-3 font-semibold text-center">Пн</th>
+                <th class="p-2 md:p-3 font-semibold text-center">Вт</th>
+                <th class="p-2 md:p-3 font-semibold text-center">Ср</th>
+                <th class="p-2 md:p-3 font-semibold text-center">Чт</th>
+                <th class="p-2 md:p-3 font-semibold text-center">Пт</th>
+                <th class="p-2 md:p-3 font-semibold text-center">Сб</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-white/10">
               <tr>
-                <td class="p-3 text-textSoft">12:00</td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-textSoft sticky left-0 bg-base z-20 border-r border-white/10">12:00</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-fuchsia-500/25 px-2 py-1">#C-10 • Стретчинг</span>
-                    <p class="text-xs text-textSoft">Анна Орлова • Classic • 1 ч</p>
-                    <span class="rounded-lg bg-emerald-500/20 px-2 py-1 text-xs text-emerald-300">Есть места</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Анна Орлова • Classic • 1 ч</p>
+                    <span class="inline-block rounded-lg bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300">Есть места</span>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td class="p-3 text-textSoft">14:00</td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-textSoft sticky left-0 bg-base z-20 border-r border-white/10">14:00</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-violet-500/25 px-2 py-1">#U-20 • Exotic Pole Dance</span>
-                    <p class="text-xs text-textSoft">Кристина Кислякова • Ultra • 1.5 ч</p>
-                    <span class="rounded-lg bg-emerald-500/20 px-2 py-1 text-xs text-emerald-300">Есть места</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Кристина Кислякова • Ultra • 1.5 ч</p>
+                    <span class="inline-block rounded-lg bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300">Есть места</span>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td class="p-3 text-textSoft">17:30</td>
-                <td class="p-3">—</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-textSoft sticky left-0 bg-base z-20 border-r border-white/10">17:30</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-rose-500/25 px-2 py-1">#C-13 • Стрип-пластика</span>
-                    <p class="text-xs text-textSoft">Люся Корнеевец • Classic • 1.5 ч</p>
-                    <span class="rounded-lg bg-red-500/20 px-2 py-1 text-xs text-red-300">Лист ожидания</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Люся Корнеевец • Classic • 1.5 ч</p>
+                    <span class="inline-block rounded-lg bg-red-500/20 px-2 py-0.5 text-[10px] text-red-300">Лист ожидания</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
               </tr>
               <tr>
-                <td class="p-3 text-textSoft">18:00</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-textSoft sticky left-0 bg-base z-20 border-r border-white/10">18:00</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-indigo-500/25 px-2 py-1">#U-04 • Pole Dance</span>
-                    <p class="text-xs text-textSoft">Ирина Шумик • Ultra • 1.5 ч</p>
-                    <span class="rounded-lg bg-emerald-500/20 px-2 py-1 text-xs text-emerald-300">Есть места</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Ирина Шумик • Ultra • 1.5 ч</p>
+                    <span class="inline-block rounded-lg bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300">Есть места</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-indigo-500/25 px-2 py-1">#C-22 • Pole Dance</span>
-                    <p class="text-xs text-textSoft">А. Посканенкова • Classic • 1.5 ч</p>
-                    <span class="rounded-lg bg-emerald-500/20 px-2 py-1 text-xs text-emerald-300">Есть места</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">А. Посканенкова • Classic • 1.5 ч</p>
+                    <span class="inline-block rounded-lg bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300">Есть места</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
               </tr>
               <tr>
-                <td class="p-3 text-textSoft">19:00</td>
-                <td class="p-3">—</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-textSoft sticky left-0 bg-base z-20 border-r border-white/10">19:00</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-purple-500/25 px-2 py-1">#U-18 • Pole Art</span>
-                    <p class="text-xs text-textSoft">Диана Свиридова • Ultra • 1.5 ч</p>
-                    <span class="rounded-lg bg-emerald-500/20 px-2 py-1 text-xs text-emerald-300">Есть места</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Диана Свиридова • Ultra • 1.5 ч</p>
+                    <span class="inline-block rounded-lg bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300">Есть места</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-rose-500/25 px-2 py-1">#U-16 • Стрип-пластика</span>
-                    <p class="text-xs text-textSoft">С. Роткович • Ultra • 1.5 ч</p>
-                    <span class="rounded-lg bg-red-500/20 px-2 py-1 text-xs text-red-300">Лист ожидания</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">С. Роткович • Ultra • 1.5 ч</p>
+                    <span class="inline-block rounded-lg bg-red-500/20 px-2 py-0.5 text-[10px] text-red-300">Лист ожидания</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
               </tr>
               <tr>
-                <td class="p-3 text-textSoft">19:30</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-textSoft sticky left-0 bg-base z-20 border-r border-white/10">19:30</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-violet-500/25 px-2 py-1">#C-11 • Exotic Pole Dance</span>
-                    <p class="text-xs text-textSoft">Светлана Роткович • Classic • 1.5 ч</p>
-                    <span class="rounded-lg bg-amber-500/20 px-2 py-1 text-xs text-amber-300">2 места</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Светлана Роткович • Classic • 1.5 ч</p>
+                    <span class="inline-block rounded-lg bg-amber-500/20 px-2 py-0.5 text-[10px] text-amber-300">2 места</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-fuchsia-500/25 px-2 py-1">#C-08 • Стретчинг</span>
-                    <p class="text-xs text-textSoft">Эля Кускова • Classic • 1 ч</p>
-                    <span class="rounded-lg bg-emerald-500/20 px-2 py-1 text-xs text-emerald-300">Есть места</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Эля Кускова • Classic • 1 ч</p>
+                    <span class="inline-block rounded-lg bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300">Есть места</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-purple-500/25 px-2 py-1">#U-12 • Pole Art</span>
-                    <p class="text-xs text-textSoft">Диана Свиридова • Ultra • 1.5 ч</p>
-                    <span class="rounded-lg bg-amber-500/20 px-2 py-1 text-xs text-amber-300">2 места</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Диана Свиридова • Ultra • 1.5 ч</p>
+                    <span class="inline-block rounded-lg bg-amber-500/20 px-2 py-0.5 text-[10px] text-amber-300">2 места</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
               </tr>
               <tr>
-                <td class="p-3 text-textSoft">20:30</td>
-                <td class="p-3">—</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-textSoft sticky left-0 bg-base z-20 border-r border-white/10">20:30</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-violet-500/25 px-2 py-1">#U-05 • Exotic Pole Dance</span>
-                    <p class="text-xs text-textSoft">Кристина Кислякова • Ultra • 1.5 ч</p>
-                    <span class="rounded-lg bg-amber-500/20 px-2 py-1 text-xs text-amber-300">3 места</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Кристина Кислякова • Ultra • 1.5 ч</p>
+                    <span class="inline-block rounded-lg bg-amber-500/20 px-2 py-0.5 text-[10px] text-amber-300">3 места</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-cyan-500/25 px-2 py-1">#C-03 • Pole Sport</span>
-                    <p class="text-xs text-textSoft">Ирина Шумик • Classic • 1.5 ч</p>
-                    <span class="rounded-lg bg-emerald-500/20 px-2 py-1 text-xs text-emerald-300">Есть места</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Ирина Шумик • Classic • 1.5 ч</p>
+                    <span class="inline-block rounded-lg bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300">Есть места</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
-                <td class="p-3">—</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
               </tr>
               <tr>
-                <td class="p-3">21:00</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-textSoft sticky left-0 bg-base z-20 border-r border-white/10">21:00</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-fuchsia-500/25 px-2 py-1">#C-07 • Стретчинг</span>
-                    <p class="text-xs text-textSoft">Анна Орлова • Classic • 1 ч</p>
-                    <span class="rounded-lg bg-emerald-500/20 px-2 py-1 text-xs text-emerald-300">Есть места</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Анна Орлова • Classic • 1 ч</p>
+                    <span class="inline-block rounded-lg bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300">Есть места</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
                     <span class="block rounded-lg bg-pink-500/25 px-2 py-1">#U-09 • Frame Up Strip</span>
-                    <p class="text-xs text-textSoft">Люся Корнеевец • Ultra • 1.5 ч</p>
-                    <span class="rounded-lg bg-amber-500/20 px-2 py-1 text-xs text-amber-300">1 место</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Люся Корнеевец • Ultra • 1.5 ч</p>
+                    <span class="inline-block rounded-lg bg-amber-500/20 px-2 py-0.5 text-[10px] text-amber-300">1 место</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
-                <td class="p-3 align-top">
-                  <div class="space-y-1">
-                    <span class="block rounded-lg bg-fuchsia-500/25 px-2 py-1">Стретчинг</span>
-                    <p class="text-xs text-textSoft">Classic • 1 ч</p>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
+                <td class="p-2 md:p-3 align-top">
+                  <div class="space-y-1 min-w-[140px]">
+                    <span class="block rounded-lg bg-fuchsia-500/25 px-2 py-1">#C-06 • Стретчинг</span>
+                    <p class="text-[10px] md:text-xs text-textSoft leading-tight">Classic • 1 ч</p>
+                    <span class="inline-block rounded-lg bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300">Есть места</span>
                   </div>
                 </td>
-                <td class="p-3">—</td>
+                <td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <section class="mt-6 card-surface p-5">
-        <h2 class="text-xl font-bold">Наборы новых групп для новичков</h2>
+      <section class="mt-10 reveal">
+        <h2 class="text-xl font-bold neon-glow-text-white">Наборы новых групп для новичков</h2>
         <p class="mt-2 text-sm text-textSoft">
           Набор — это предварительная запись в новую группу. Группа еще не занимается, место можно забронировать заранее.
         </p>
@@ -224,5 +240,11 @@
         </div>
       </section>
     </main>
+    <footer class="relative z-10 border-t border-white/10 py-6">
+      <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 text-xs text-textSoft md:flex-row md:items-center md:justify-between">
+        <p>Copyright © 2015 - 2026 • ООО "Империя Танца"</p>
+      </div>
+    </footer>
+    <script src="./main.js"></script>
   </body>
 </html>

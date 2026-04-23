@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Направления — Империя Танца</title>
+    <title>Студия танцев в Минске | Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех.</title>
+    <meta
+      name="description"
+      content="Студия танцев в Минске. Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех."
+    />
     <link rel="stylesheet" href="./styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -14,23 +18,269 @@
     <div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div><div class="bg-noise"></div>
     <header class="sticky top-0 z-50 border-b border-white/10 bg-base/80 backdrop-blur-md">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-        <a href="./index.html" class="text-sm font-bold tracking-[0.14em]">ИМПЕРИЯ ТАНЦА</a>
+        <a href="./index.html" class="flex items-center text-sm font-bold tracking-[0.14em]">
+          <svg class="mr-3 h-7 w-7 text-neon drop-shadow-[0_0_8px_rgba(217,70,239,0.6)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7Z"/>
+            <path d="M5 20h14"/>
+          </svg>
+          <span class="text-white neon-glow-text-white">ИМПЕРИЯ ТАНЦА</span>
+        </a>
         <nav class="hidden items-center gap-5 text-sm md:flex">
+          <a href="./index.html" class="nav-link">Главная</a>
           <a href="./directions.html" class="nav-link">Направления</a><a href="./trainers.html" class="nav-link">Тренеры</a><a href="./schedule.html" class="nav-link">Расписание</a><a href="./prices.html" class="nav-link">Цены</a><a href="./gallery.html" class="nav-link">Галерея</a><a href="./sale.html" class="nav-link">Акции</a><a href="./bonus.html" class="nav-link">Бонусная карта</a><a href="./contacts.html" class="nav-link">Контакты</a>
         </nav>
       </div>
     </header>
     <main class="relative z-10 mx-auto max-w-7xl px-4 pb-12 pt-8">
-      <h1 class="text-3xl font-black md:text-5xl">Направления занятий</h1>
-      <p class="mt-3 max-w-3xl text-sm text-textSoft">В студии проходят занятия Pole Dance, Exotic Pole Dance, Стрип-пластика, Стретчинг, Pole Art, Pole Sport, Erotic Dance, Private Dance и индивидуальные уроки.</p>
+      <section class="reveal">
+        <p class="text-xs uppercase tracking-[0.2em] text-neon neon-glow-text">Ваш путь в танце</p>
+        <h1 class="mt-2 text-3xl font-black md:text-5xl neon-glow-text-white">Направления студии</h1>
+        <p class="mt-4 max-w-3xl text-sm text-textSoft neon-glow-text-violet">
+          В школе танца "Империя танца" мы предлагаем самые популярные и современные стили. На первый взгляд они могут казаться похожими, но каждое имеет свои уникальные особенности. Выбирайте то, что откликается вашему сердцу!
+        </p>
+      </section>
+
       <section class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <article class="card-surface p-5"><h2 class="text-xl font-bold">Pole Dance</h2><p class="mt-2 text-sm text-textSoft">Силовые тренировки на пилоне, акробатика и трюки в верхней части пилона.</p></article>
-        <article class="card-surface p-5"><h2 class="text-xl font-bold">Exotic Pole Dance</h2><p class="mt-2 text-sm text-textSoft">Танцевальные связки в нижней части пилона и в партере, занятия на каблуках.</p></article>
-        <article class="card-surface p-5"><h2 class="text-xl font-bold">Стрип-пластика</h2><p class="mt-2 text-sm text-textSoft">Женственные и чувственные связки, развитие пластики и музыкальности.</p></article>
-        <article class="card-surface p-5"><h2 class="text-xl font-bold">Стретчинг</h2><p class="mt-2 text-sm text-textSoft">Растяжка и гибкость для отличного самочувствия и шпагата.</p></article>
-        <article class="card-surface p-5"><h2 class="text-xl font-bold">Pole Art</h2><p class="mt-2 text-sm text-textSoft">Танец на пилоне с элементами хореографии, нежный и артистичный стиль.</p></article>
-        <article class="card-surface p-5"><h2 class="text-xl font-bold">Индивидуальные занятия</h2><p class="mt-2 text-sm text-textSoft">Персональная тренировка с тренером и подбор программы под вашу цель.</p></article>
+        <!-- Стретчинг -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Стретчинг</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Растяжка для всех групп мышц. Помогает сесть на шпагат, улучшить осанку и общее самочувствие.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Шпагат с нуля</li>
+            <li>• Гибкость спины</li>
+            <li>• Снятие зажимов</li>
+          </ul>
+        </article>
+
+        <!-- Стрип-пластика -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Стрип-пластика</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Чувственный танец, развивающий женственность и пластику. Включает работу в партере и на ногах.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Пластика тела</li>
+            <li>• Грация движений</li>
+            <li>• Работа в партере</li>
+          </ul>
+        </article>
+
+        <!-- Exotic Pole Dance -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Exotic Pole Dance</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Танцевальное направление на пилоне в стрипах. Акцент на хореографию, околопилонную пластику и музыкальность.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Танец в стрипах</li>
+            <li>• Околопилонная хореография</li>
+            <li>• Музыкальность</li>
+          </ul>
+        </article>
+
+        <!-- Pole Dance -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Pole Dance</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Классическое направление танца на пилоне, сочетающее в себе трюки, крутки и танцевальные элементы.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Трюки и крутки</li>
+            <li>• Силовые элементы</li>
+            <li>• Акробатика на пилоне</li>
+          </ul>
+        </article>
+
+        <!-- Pole Art -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Pole Art</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Артистичное направление, где пилон используется как инструмент для выражения эмоций и создания образа.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Образ и эмоции</li>
+            <li>• Театральность</li>
+            <li>• Хореография</li>
+          </ul>
+        </article>
+
+        <!-- Pole Relax -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Pole Relax</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Спокойные и плавные движения на пилоне и около него, направленные на расслабление и удовольствие от процесса.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Плавность</li>
+            <li>• Антистресс</li>
+            <li>• Гармония тела</li>
+          </ul>
+        </article>
+
+        <!-- Акробатическая петля -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Акробатическая петля</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Занятия на специальном подвесном снаряде, развивающие силу, гибкость и координацию в воздухе.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Воздушная акробатика</li>
+            <li>• Сила и баланс</li>
+            <li>• Координация</li>
+          </ul>
+        </article>
+
+        <!-- Pole Sport -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Pole Sport</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Спортивное направление на пилоне с четкими правилами исполнения сложных силовых и акробатических элементов.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Спортивная дисциплина</li>
+            <li>• Сложные трюки</li>
+            <li>• Выносливость</li>
+          </ul>
+        </article>
+
+        <!-- Exotic Hard -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Exotic Hard</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Продвинутый уровень экзотика с упором на сложные акробатические фишки, динамику и силовые переходы.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Динамика</li>
+            <li>• Сложные фишки</li>
+            <li>• Силовые переходы</li>
+          </ul>
+        </article>
+
+        <!-- Exo-Strip -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Exo-Strip</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Микс экзотика и стрип-пластики, объединяющий работу с пилоном и чувственную партерную хореографию.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Микс направлений</li>
+            <li>• Женственность</li>
+            <li>• Партерная работа</li>
+          </ul>
+        </article>
+
+        <!-- Exotic Basic -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Exotic Basic</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Базовый уровень экзотика для начинающих. Изучение основ походки, круток и простых связок.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Основы с нуля</li>
+            <li>• Базовые крутки</li>
+            <li>• Простые связки</li>
+          </ul>
+        </article>
+
+        <!-- Erotic Dance -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Erotic Dance</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Танец, направленный на раскрытие чувственности и уверенности в себе через плавные и выразительные движения.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Чувственность</li>
+            <li>• Уверенность</li>
+            <li>• Пластика</li>
+          </ul>
+        </article>
+
+        <!-- Приватный танец -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Приватный танец</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Индивидуальный танец для особого случая, обучающий взаимодействию и искусству соблазнения.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Соблазнение</li>
+            <li>• Работа с образом</li>
+            <li>• Жестикуляция</li>
+          </ul>
+        </article>
+
+        <!-- Frame Up Strip -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Frame Up Strip</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Динамичный и техничный стиль стрипа, характеризующийся четкими линиями, скоростью и музыкальностью.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Скорость и техника</li>
+            <li>• Музыкальность</li>
+            <li>• Четкие линии</li>
+          </ul>
+        </article>
+
+        <!-- High Heels -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">High Heels</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Энергичный танец на каблуках, объединяющий элементы джаз-фанка, вога и стрипа.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Энергия</li>
+            <li>• Уверенность</li>
+            <li>• Танец на каблуках</li>
+          </ul>
+        </article>
+
+        <!-- Lady Dance -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Lady Dance</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Комплексное танцевальное направление для девушек, включающее элементы различных современных стилей.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Универсальность</li>
+            <li>• Пластика</li>
+            <li>• Самовыражение</li>
+          </ul>
+        </article>
+
+        <!-- Тверк -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Тверк</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Зажигательный танец, акцентирующий внимание на активной работе бедер и ягодиц под энергичную музыку.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Ритм</li>
+            <li>• Акцент на бедра</li>
+            <li>• Энергичность</li>
+          </ul>
+        </article>
+
+        <!-- Индивидуальные уроки -->
+        <article class="card-surface reveal p-5">
+          <h2 class="text-xl font-bold neon-glow-text-white">Индивидуальные уроки</h2>
+          <p class="mt-3 text-sm text-textSoft leading-relaxed">
+            Персональные тренировки с тренером по любому из направлений студии для максимально быстрого результата.
+          </p>
+          <ul class="mt-3 space-y-1 text-xs text-neon/80 font-medium">
+            <li>• Личный график</li>
+            <li>• Быстрый прогресс</li>
+            <li>• Индивидуальный подход</li>
+          </ul>
+        </article>
       </section>
     </main>
+    <footer class="relative z-10 border-t border-white/10 py-6">
+      <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 text-xs text-textSoft md:flex-row md:items-center md:justify-between">
+        <p>Copyright © 2015 - 2026 • ООО "Империя Танца"</p>
+      </div>
+    </footer>
+    <script src="./main.js"></script>
   </body>
 </html>

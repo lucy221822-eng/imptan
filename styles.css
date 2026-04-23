@@ -1,5 +1,11 @@
 :root {
   color-scheme: dark;
+  --orb-1-rgb: 217, 70, 239;
+  --orb-2-rgb: 124, 58, 237;
+  --orb-1-pos-x: -8rem;
+  --orb-1-pos-y: -12rem;
+  --orb-2-pos-x: -10rem;
+  --orb-2-pos-y: -20rem;
 }
 
 * {
@@ -14,6 +20,7 @@ body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
+  background-color: #0f051a;
 }
 
 .bg-orb {
@@ -22,22 +29,23 @@ body {
   filter: blur(70px);
   pointer-events: none;
   z-index: 0;
+  transition: transform 0.8s ease-out;
 }
 
 .bg-orb-1 {
   width: 42rem;
   height: 42rem;
-  background: radial-gradient(circle, rgba(217, 70, 239, 0.45) 0%, rgba(217, 70, 239, 0) 68%);
-  top: -12rem;
-  left: -8rem;
+  background: radial-gradient(circle, rgba(var(--orb-1-rgb), 0.45) 0%, rgba(var(--orb-1-rgb), 0) 68%);
+  top: var(--orb-1-pos-y);
+  left: var(--orb-1-pos-x);
 }
 
 .bg-orb-2 {
   width: 46rem;
   height: 46rem;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.5) 0%, rgba(124, 58, 237, 0) 65%);
-  bottom: -20rem;
-  right: -10rem;
+  background: radial-gradient(circle, rgba(var(--orb-2-rgb), 0.5) 0%, rgba(var(--orb-2-rgb), 0) 65%);
+  bottom: var(--orb-2-pos-y);
+  right: var(--orb-2-pos-x);
 }
 
 .bg-noise {
@@ -141,6 +149,32 @@ body {
 .reveal.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+.neon-glow-text {
+  text-shadow: 
+    0 0 7px rgba(217, 70, 239, 0.8),
+    0 0 14px rgba(217, 70, 239, 0.5),
+    0 0 21px rgba(217, 70, 239, 0.3);
+}
+
+.neon-glow-text-violet {
+  text-shadow: 
+    0 0 7px rgba(124, 58, 237, 0.8),
+    0 0 14px rgba(124, 58, 237, 0.5),
+    0 0 21px rgba(124, 58, 237, 0.3);
+}
+
+.neon-glow-text-white {
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.7),
+    0 0 15px rgba(217, 70, 239, 0.8),
+    0 0 30px rgba(217, 70, 239, 0.6),
+    0 0 45px rgba(217, 70, 239, 0.4);
+}
+
+.force-white {
+  color: #ffffff !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
