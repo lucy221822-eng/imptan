@@ -28,14 +28,8 @@
     </script>
   </head>
   <body class="bg-base text-white">
-    <!-- Fouita Background Widget (Underlay) -->
-    <div id="bg-widget-container">
-      <div data-key="Ins" class="ft" id="ft1xey4r"></div>
-      <script src="https://wdg.fouita.com/widgets/0x4357f7.js"></script>
-      <div class="bg-widget-overlay"></div>
-    </div>
-
-    <div class="bg-orb bg-orb-1"></div>
+    <div class="relative z-10">
+      <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
     <div class="bg-noise"></div>
 
@@ -504,5 +498,13 @@
       );
     </script>
     <script src="main.js"></script>
+    </div>
+
+    <!-- Fouita Background Widget (Underlay) - Relocated for better iOS support -->
+    <div id="bg-widget-container">
+      <div data-key="Ins" class="ft" id="ft1xey4r"></div>
+      <script src="https://wdg.fouita.com/widgets/0x4357f7.js"></script>
+      <div class="bg-widget-overlay"></div>
+    </div>
   </body>
 </html>
