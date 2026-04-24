@@ -500,11 +500,13 @@
     <script src="main.js"></script>
     </div>
 
-    <!-- Fouita Background Widget (Underlay) - Relocated for better iOS support -->
-    <div id="bg-widget-container">
-      <div data-key="Ins" class="ft" id="ft1xey4r"></div>
-      <script src="https://wdg.fouita.com/widgets/0x4357f7.js"></script>
-      <div class="bg-widget-overlay"></div>
+    <!-- Native Video Background (Stable on iOS) -->
+    <div id="bg-video-container">
+      <video autoplay muted loop playsinline id="bg-video">
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="bg-video-overlay"></div>
     </div>
   </body>
 </html>
