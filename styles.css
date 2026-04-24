@@ -565,67 +565,74 @@ body {
    }
 
    /* Background Underlay Widget */
-     #bg-widget-container {
-       position: fixed !important;
-       top: 0 !important;
-       left: 0 !important;
-       width: 100% !important;
-       height: 100% !important;
-       width: 100vw !important;
-       height: 100dvh !important; /* Используем dvh для iOS Safari */
-       z-index: -1 !important;
-       overflow: hidden !important;
-       pointer-events: none !important;
-       margin: 0 !important;
-       padding: 0 !important;
-       background: #0f051a !important;
-       /* Исправление для iOS: предотвращаем проблемы с fixed позиционированием */
-       -webkit-transform: translateZ(0);
-       transform: translateZ(0);
-       backface-visibility: hidden;
-     }
-  
-     #ft1xey4r, 
-     #ft-insta-app,
-     .ft-widget-container,
-     #bg-widget-container iframe,
-     #bg-widget-container .ft {
-       width: 100% !important;
-       height: 100% !important;
-       width: 100vw !important;
-       height: 100dvh !important;
-       max-width: none !important;
-       max-height: none !important;
-       min-width: 100% !important;
-       min-height: 100% !important;
-       display: block !important;
-       border: none !important;
-     }
-  
-     /* Принудительное заполнение для всех медиа-элементов внутри */
-     #bg-widget-container iframe,
-     #bg-widget-container img,
-     #bg-widget-container video,
-     .ft-insta-app-card { 
-       width: 100% !important;
-       height: 100% !important;
-       width: 100vw !important;
-       height: 100dvh !important;
-       object-fit: cover !important;
-       /* Убираем transform scale для мобильных, чтобы избежать дерганья при скролле на iOS */
-     }
-  
-     .bg-widget-overlay {
-       position: absolute;
-       top: 0;
-       left: 0;
-       width: 100%;
-       height: 100%;
-       background: rgba(15, 5, 26, 0.6);
-       z-index: 10;
-       /* Исправление для iOS */
-       -webkit-transform: translateZ(0);
-     }
+      #bg-widget-container {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        height: 100dvh !important;
+        z-index: -1 !important;
+        overflow: hidden !important;
+        pointer-events: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #0f051a !important;
+        /* Радикальное исправление для iOS Safari */
+        -webkit-overflow-scrolling: touch;
+        transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0,0,0);
+      }
+   
+      #ft1xey4r, 
+      #ft-insta-app,
+      .ft-widget-container,
+      #bg-widget-container iframe,
+      #bg-widget-container .ft,
+      #bg-widget-container div {
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 100% !important;
+        min-height: 100% !important;
+        max-width: none !important;
+        max-height: none !important;
+        display: block !important;
+        border: none !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+      }
+   
+      /* Исправление для последних версий iOS: заставляем контент внутри iframe растягиваться */
+      #bg-widget-container iframe {
+        height: 100dvh !important;
+        width: 100vw !important;
+      }
+
+      /* Принудительное заполнение для всех медиа-элементов внутри */
+      #bg-widget-container img,
+      #bg-widget-container video,
+      .ft-insta-app-card { 
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+      }
+   
+      .bg-widget-overlay {
+        position: fixed !important; /* На iOS fixed overlay работает стабильнее */
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        height: 100dvh !important;
+        background: rgba(15, 5, 26, 0.6);
+        z-index: 10;
+        pointer-events: none !important;
+        transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0,0,0);
+      }
    
       /* Footer styles */
 
