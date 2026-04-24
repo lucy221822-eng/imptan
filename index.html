@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Студия танцев в Минске | Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех.</title>
-    <meta
-      name="description"
-      content="Студия танцев в Минске. Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех."
-    />
+    <meta name="description" content="Студия танцев в Минске. Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23d946ef%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7Z%22/><path d=%22M5 20h14%22/></svg>">
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -30,6 +28,13 @@
     </script>
   </head>
   <body class="bg-base text-white">
+    <!-- Fouita Background Widget (Underlay) -->
+    <div id="bg-widget-container">
+      <div data-key="Ins" class="ft" id="ft1xey4r"></div>
+      <script src="https://wdg.fouita.com/widgets/0x4357f7.js"></script>
+      <div class="bg-widget-overlay"></div>
+    </div>
+
     <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
     <div class="bg-noise"></div>
@@ -43,6 +48,14 @@
           </svg>
           <span class="text-white neon-glow-text-white">ИМПЕРИЯ ТАНЦА</span>
         </a>
+        <div class="hidden items-center gap-3 lg:flex">
+          <a href="tel:+375295760055" class="header-phone-btn text-[10px] font-bold text-white transition-all">
+            +375 29 576 00 55
+          </a>
+          <a href="tel:+375445760055" class="header-phone-btn text-[10px] font-bold text-white transition-all">
+            +375 44 576 00 55
+          </a>
+        </div>
         <button
           id="menuBtn"
           class="rounded-lg border border-white/20 px-4 py-2 text-xs font-semibold md:hidden"
@@ -77,148 +90,319 @@
     </header>
 
     <main class="relative z-10">
-      <section id="hero" class="mx-auto grid max-w-7xl gap-8 px-4 pb-12 pt-10 md:grid-cols-2 md:pt-16">
-        <article class="reveal">
-          <p class="mb-4 text-lg font-bold uppercase tracking-[0.25em] text-neon neon-glow-text">Студия танцев в Минске</p>
-          <h1 class="text-3xl font-black leading-tight md:text-5xl neon-glow-text-white">
-            Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех.
+      <section class="relative flex flex-col items-center justify-center px-4 pt-12 pb-2 text-center">
+        <div class="reveal">
+          <p class="text-xs uppercase tracking-[0.4em] text-neon neon-glow-text">Танцевальная студия в Минске</p>
+          <h1 class="mt-6 text-5xl font-black tracking-tight text-white md:text-8xl neon-glow-text-white">
+            ИМПЕРИЯ ТАНЦА
           </h1>
-          <p class="mt-5 max-w-xl text-sm leading-relaxed force-white md:text-base font-semibold neon-glow-text-white">
-            Научим танцевать с нуля. Удобное расписание с 10:00 до 23:00, комфортные цены, современные залы и атмосфера, в которую хочется возвращаться.
+          <p class="mx-auto mt-6 max-w-xl text-lg text-textSoft">
+            Профессиональное обучение Pole Dance, Стрип-пластика и Стретчинг в самом центре города.
           </p>
-          <div class="mt-7 flex flex-wrap gap-3">
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
             <a href="tel:+375295760055" class="cta-main">+375 29 576 00 55</a>
             <a href="tel:+375445760055" class="cta-ghost">+375 44 576 00 55</a>
           </div>
-        </article>
-
-        <article class="reveal card-surface p-4">
-          <img src="https://imperiatanca.by/d/shkola-tancev-na-pilone-imperija.jpg" alt="Империя Танца" class="h-full min-h-[260px] w-full rounded-2xl object-cover" />
-        </article>
-      </section>
-
-      <section class="mx-auto max-w-7xl px-4 pb-4">
-        <div class="grid gap-4 md:grid-cols-2">
-          <a href="sale.html" class="card-surface reveal group p-5">
-            <p class="text-xs uppercase tracking-[0.2em] text-neon">Спецпредложения</p>
-            <h2 class="mt-2 text-2xl font-black neon-glow-text-white">Акции</h2>
-            <p class="mt-2 text-sm text-textSoft">Скидки до 12 руб., бонусы за подруг, скидка на продление и персональные предложения.</p>
-            <span class="mt-4 inline-flex cta-main group-hover:scale-[1.01]">Смотреть акции</span>
-          </a>
-          <a href="bonus.html" class="card-surface reveal group p-5">
-            <p class="text-xs uppercase tracking-[0.2em] text-neon">Лояльность</p>
-            <h2 class="mt-2 text-2xl font-black neon-glow-text-white">Бонусная карта</h2>
-            <p class="mt-2 text-sm text-textSoft">Собирай стикеры, продлевай абонемент без перерывов и получай приятные бонусы.</p>
-            <span class="mt-4 inline-flex cta-main group-hover:scale-[1.01]">Узнать условия</span>
-          </a>
         </div>
       </section>
 
-      <section class="mx-auto max-w-7xl px-4 py-10">
-        <div class="mb-6 flex items-end justify-between reveal">
-          <h2 class="text-2xl font-black md:text-4xl neon-glow-text-white">Направления</h2>
-          <a href="directions.html" class="text-xs uppercase tracking-[0.2em] text-textSoft">Смотреть все</a>
+      <section class="mx-auto max-w-7xl px-4 accordion-section">
+        <div class="accordion-header reveal" onclick="toggleAccordion(this)">
+          <div class="flex items-center gap-4">
+            <svg class="h-8 w-8 text-neon drop-shadow-[0_0_8px_rgba(217,70,239,0.6)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            <h2 class="text-2xl font-black md:text-4xl">Направления</h2>
+          </div>
+          <svg class="accordion-icon h-6 w-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
-        <div id="directionsGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+        <div class="accordion-content mt-4">
+          <div class="flex items-end justify-between mb-6">
+            <p class="text-sm text-textSoft">Выберите подходящий стиль танца для вашего развития.</p>
+            <a href="directions.html" class="text-xs uppercase tracking-[0.2em] text-textSoft">Смотреть все</a>
+          </div>
+          <div id="directionsGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+        </div>
       </section>
 
-      <section class="mx-auto max-w-7xl px-4 py-10">
-        <div class="mb-6 reveal">
-          <h2 class="text-2xl font-black md:text-4xl neon-glow-text-white">Расписание</h2>
-          <p class="mt-2 text-sm text-textSoft">
+      <section class="mx-auto max-w-7xl px-4 accordion-section">
+        <div class="accordion-header reveal" onclick="toggleAccordion(this)">
+          <div class="flex items-center gap-4">
+            <svg class="h-8 w-8 text-neon drop-shadow-[0_0_8px_rgba(217,70,239,0.6)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <h2 class="text-2xl font-black md:text-4xl">Расписание</h2>
+          </div>
+          <svg class="accordion-icon h-6 w-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+        <div class="accordion-content mt-4">
+          <p class="mt-2 text-sm text-textSoft mb-6">
             Первая тренировка в любой группе от 10 руб. или бесплатно при покупке абонемента в день пробного занятия.
           </p>
+          <div id="scheduleGrid" class="grid gap-3 md:grid-cols-2">
+            <!-- Пример карточки для демонстрации работы скрипта (будут заполняться динамически или статически) -->
+            <div class="card-surface p-5 reveal">
+              <p class="text-xs text-neon uppercase tracking-wider mb-1">Понедельник (Пн)</p>
+              <h3 class="text-lg font-bold neon-glow-text-white">Pole Dance</h3>
+              <p class="text-sm text-textSoft">18:00 - 19:30 • Зал Classic</p>
+            </div>
+            <div class="card-surface p-5 reveal">
+              <p class="text-xs text-neon uppercase tracking-wider mb-1">Вторник (Вт)</p>
+              <h3 class="text-lg font-bold neon-glow-text-white">Стретчинг</h3>
+              <p class="text-sm text-textSoft">19:30 - 20:30 • Зал Ultra</p>
+            </div>
+            <div class="card-surface p-5 reveal">
+              <p class="text-xs text-neon uppercase tracking-wider mb-1">Среда (Ср)</p>
+              <h3 class="text-lg font-bold neon-glow-text-white">Exotic Pole Dance</h3>
+              <p class="text-sm text-textSoft">20:30 - 22:00 • Зал Classic</p>
+            </div>
+            <div class="card-surface p-5 reveal">
+              <p class="text-xs text-neon uppercase tracking-wider mb-1">Четверг (Чт)</p>
+              <h3 class="text-lg font-bold neon-glow-text-white">Стрип-пластика</h3>
+              <p class="text-sm text-textSoft">19:00 - 20:30 • Зал Ultra</p>
+            </div>
+            <div class="card-surface p-5 reveal">
+              <p class="text-xs text-neon uppercase tracking-wider mb-1">Пятница (Пт)</p>
+              <h3 class="text-lg font-bold neon-glow-text-white">Pole Art</h3>
+              <p class="text-sm text-textSoft">18:30 - 20:00 • Зал Classic</p>
+            </div>
+            <div class="card-surface p-5 reveal">
+              <p class="text-xs text-neon uppercase tracking-wider mb-1">Суббота (Сб)</p>
+              <h3 class="text-lg font-bold neon-glow-text-white">Стретчинг</h3>
+              <p class="text-sm text-textSoft">12:00 - 13:00 • Зал Classic</p>
+            </div>
+          </div>
+          <a href="schedule.html" class="mt-6 inline-flex cta-ghost">Полное расписание</a>
         </div>
-        <div id="scheduleGrid" class="grid gap-3 md:grid-cols-2"></div>
-        <a href="schedule.html" class="mt-4 inline-flex cta-ghost">Полное расписание</a>
       </section>
 
-      <section class="mx-auto max-w-7xl px-4 py-10">
-        <div class="mb-6 reveal">
-          <h2 class="text-2xl font-black md:text-4xl neon-glow-text-white">Цены</h2>
-          <p class="mt-2 text-sm text-textSoft">
+      <section class="mx-auto max-w-7xl px-4 accordion-section">
+        <div class="accordion-header reveal" onclick="toggleAccordion(this)">
+          <div class="flex items-center gap-4">
+            <svg class="h-8 w-8 text-neon drop-shadow-[0_0_8px_rgba(217,70,239,0.6)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+            <h2 class="text-2xl font-black md:text-4xl">Цены</h2>
+          </div>
+          <svg class="accordion-icon h-6 w-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+        <div class="accordion-content mt-4">
+          <p class="text-sm text-textSoft mb-6">
             Цены вшиты в проект и не зависят от внешних источников.
           </p>
+          <div id="pricesGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="card-surface reveal p-5">
+              <h3 class="text-xl font-bold neon-glow-text-white">Пробное</h3>
+              <p class="mt-4 text-3xl font-black neon-glow-text-white">10 руб.</p>
+              <p class="mt-2 text-sm text-textSoft">Первое занятие в любой группе</p>
+              <ul class="mt-4 space-y-2 text-xs text-textSoft">
+                <li>• Любое направление</li>
+                <li>• Знакомство с тренером</li>
+              </ul>
+            </article>
+            <article class="card-surface popular-card reveal p-5">
+              <h3 class="text-xl font-bold neon-glow-text-white">Стандарт</h3>
+              <p class="mt-4 text-3xl font-black neon-glow-text-white">85 руб.</p>
+              <p class="mt-2 text-sm text-textSoft">8 занятий в месяц</p>
+              <ul class="mt-4 space-y-2 text-xs text-textSoft">
+                <li>• 2 раза в неделю</li>
+                <li>• Заморозка 7 дней</li>
+                <li>• Бонусные стикеры</li>
+              </ul>
+            </article>
+            <article class="card-surface reveal p-5">
+              <h3 class="text-xl font-bold neon-glow-text-white">Безлимит</h3>
+              <p class="mt-4 text-3xl font-black neon-glow-text-white">150 руб.</p>
+              <p class="mt-2 text-sm text-textSoft">Неограниченно занятий</p>
+              <ul class="mt-4 space-y-2 text-xs text-textSoft">
+                <li>• Все направления</li>
+                <li>• Заморозка 14 дней</li>
+                <li>• Максимум прогресса</li>
+              </ul>
+            </article>
+          </div>
+          <a href="prices.html" class="mt-6 inline-flex cta-ghost">Полный прайс</a>
         </div>
-        <div id="pricesGrid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
-        <a href="prices.html" class="mt-4 inline-flex cta-ghost">Полный прайс</a>
       </section>
 
-      <section class="mx-auto max-w-7xl px-4 py-10">
-        <div class="mb-6 reveal">
-          <h2 class="text-2xl font-black md:text-4xl neon-glow-text-white">Галерея</h2>
-          <p class="mt-2 text-sm text-textSoft">
-            Плейсхолдеры для локальных фото. Подмените файлы в папке `./assets/`.
-          </p>
+      <section class="mx-auto max-w-7xl px-4 accordion-section">
+        <div class="accordion-header reveal" onclick="toggleAccordion(this)">
+          <div class="flex items-center gap-4">
+            <svg class="h-8 w-8 text-neon drop-shadow-[0_0_8px_rgba(217,70,239,0.6)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>
+            </svg>
+            <h2 class="text-2xl font-black md:text-4xl">Галерея</h2>
+          </div>
+          <svg class="accordion-icon h-6 w-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
-        <div id="galleryGrid" class="grid grid-cols-2 gap-3 md:grid-cols-4"></div>
-        <a href="gallery.html" class="mt-4 inline-flex cta-ghost">Открыть галерею</a>
+        <div class="accordion-content mt-4">
+          <div id="galleryGrid" class="grid grid-cols-2 gap-3 md:grid-cols-4"></div>
+          <a href="gallery.html" class="mt-6 inline-flex cta-ghost">Открыть галерею</a>
+        </div>
       </section>
 
-      <section class="mx-auto max-w-7xl px-4 py-10">
-        <h2 class="reveal mb-6 text-2xl font-black md:text-4xl neon-glow-text-white">Контакты</h2>
-        <div class="grid gap-4 md:grid-cols-2">
-          <article class="card-surface reveal p-5">
-            <h3 class="text-lg font-bold neon-glow-text-white">ООО "Империя Танца"</h3>
-            <p class="mt-3 text-sm text-textSoft">Минск, Кальварийская, 25-205, 20 метров от м. Молодежной</p>
-            <p class="mt-1 text-sm text-textSoft">Пн-Сб: 11:00-23:00, Воскресенье: выходной</p>
-            <p class="mt-1 text-sm text-textSoft">УНП: 192489853</p>
-            <div class="mt-4 grid gap-2 text-sm">
-              <a class="nav-link" href="tel:+375295760055">+375 29 576 00 55 (МТС)</a>
-              <a class="nav-link" href="tel:+375445760055">+375 44 576 00 55 (А1)</a>
-            </div>
-          </article>
-          <article class="card-surface reveal p-5">
-            <h3 class="text-lg font-bold neon-glow-text-white">Запишись на занятие</h3>
-            <p class="mt-3 text-sm text-textSoft">Приходи на первый урок в студии и совершенствуйся с нами.</p>
-            <form class="mt-4 grid gap-3">
-              <input class="input-field" placeholder="Имя" type="text" />
-              <input class="input-field" placeholder="Телефон" type="tel" />
-              <button class="cta-main w-full" type="button">Хочу начать</button>
-            </form>
-          </article>
+      <section class="mx-auto max-w-7xl px-4 accordion-section">
+        <div class="accordion-header reveal" onclick="toggleAccordion(this)">
+          <div class="flex items-center gap-4">
+            <svg class="h-8 w-8 text-neon drop-shadow-[0_0_8px_rgba(217,70,239,0.6)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+            </svg>
+            <h2 class="text-2xl font-black md:text-4xl">Акции и бонусы</h2>
+          </div>
+          <svg class="accordion-icon h-6 w-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
-        <a href="contacts.html" class="mt-4 inline-flex cta-ghost">Страница контактов</a>
-      </section>
-
-      <section id="socials" class="mx-auto max-w-7xl px-4 pb-12">
-        <article class="card-surface reveal p-5">
-          <h2 class="text-lg font-bold neon-glow-text-white">Мы в социальных сетях</h2>
-          <div class="mt-4 flex flex-wrap gap-2 text-sm">
-            <a class="cta-ghost flex items-center gap-2" href="https://www.instagram.com/imperiatanca.by/" target="_blank" rel="noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-              Instagram
+        <div class="accordion-content mt-4">
+          <div class="grid gap-4 md:grid-cols-2">
+            <a href="sale.html" class="card-surface reveal group p-5">
+              <p class="text-xs uppercase tracking-[0.2em] text-neon">Спецпредложения</p>
+              <h2 class="mt-2 text-2xl font-black neon-glow-text-white">Акции</h2>
+              <p class="mt-2 text-sm text-textSoft">Скидки до 12 руб., бонусы за подруг, скидка на продление и персональные предложения.</p>
+              <span class="mt-4 inline-flex cta-main group-hover:scale-[1.01]">Смотреть акции</span>
             </a>
-            <a class="cta-ghost flex items-center gap-2" href="viber://add?number=375445760055">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              Viber
-            </a>
-            <a class="cta-ghost flex items-center gap-2" href="https://www.tiktok.com/@imperiatanca.by" target="_blank" rel="noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
-              TikTok
-            </a>
-            <a class="cta-ghost flex items-center gap-2" href="https://www.youtube.com/channel/UCENKS2QtXndmy4lzYcKWfMw" target="_blank" rel="noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"></path><rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect></svg>
-              YouTube
-            </a>
-            <a class="cta-ghost flex items-center gap-2" href="https://t.me/imperiatanca" target="_blank" rel="noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-              Telegram
-            </a>
-            <a class="cta-ghost flex items-center gap-2" href="https://vk.com/imperia_tanca_minsk" target="_blank" rel="noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.162 18.994c.609 0 .858-.406.858-.915v-2.996c0-.365.121-.821.848-.821.727 0 1.492.574 2.508 1.492.592.534.92 1.249.92 2.134h2.754c.466 0 .912-.257.912-.861 0-.311-.14-.763-.368-1.012l-3.267-3.626c-.467-.512-.467-.684 0-1.156l2.856-3.164c.3-.332.613-.68.613-1.145 0-.311-.133-.741-.757-.741h-2.734c-.651 0-.915.421-1.06.635l-1.676 3.198c-.113.214-.515.684-.731.684-.216 0-.31-.051-.31-.729V9.019c0-1.21-.057-1.754-1.207-1.754h-3.833c-.452 0-.866.232-.866.582 0 .333.342.395.664.548.854.405.854 1.327.854 1.812v3.35c0 .763-.167.915-.531.915-.903 0-3.136-3.189-4.34-6.67-.181-.513-.575-.782-1.132-.782H3.502c-.596 0-.714.282-.714.592 0 .548.672 2.708 3.123 6.122 2.26 3.137 4.715 4.856 7.251 4.856z"/></svg>
-              VK
-            </a>
-            <a class="cta-ghost flex items-center gap-2" href="https://wa.me/375445760055" target="_blank" rel="noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              WhatsApp
+            <a href="bonus.html" class="card-surface reveal group p-5">
+              <p class="text-xs uppercase tracking-[0.2em] text-neon">Лояльность</p>
+              <h2 class="mt-2 text-2xl font-black neon-glow-text-white">Бонусная карта</h2>
+              <p class="mt-2 text-sm text-textSoft">Собирай стикеры, продлевай абонемент без перерывов и получай приятные бонусы.</p>
+              <span class="mt-4 inline-flex cta-main group-hover:scale-[1.01]">Узнать условия</span>
             </a>
           </div>
-        </article>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-4 accordion-section">
+        <div class="accordion-header reveal" onclick="toggleAccordion(this)">
+          <div class="flex items-center gap-4">
+            <svg class="h-8 w-8 text-neon drop-shadow-[0_0_8px_rgba(217,70,239,0.6)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            <h2 class="text-2xl font-black md:text-4xl">Контакты</h2>
+          </div>
+          <svg class="accordion-icon h-6 w-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+        <div class="accordion-content mt-4">
+          <div class="grid gap-4 md:grid-cols-2">
+            <article class="card-surface reveal p-5">
+              <h3 class="text-lg font-bold neon-glow-text-white">ООО "Империя Танца"</h3>
+              <p class="mt-3 text-sm text-textSoft">Минск, Кальварийская, 25-205, 20 метров от м. Молодежной</p>
+              <p class="mt-1 text-sm text-textSoft">Пн-Сб: 11:00-23:00, Воскресенье: выходной</p>
+              <p class="mt-1 text-sm text-textSoft">УНП: 192489853</p>
+              <div class="mt-4 grid gap-2 text-sm">
+                <a class="nav-link" href="tel:+375295760055">+375 29 576 00 55 (МТС)</a>
+                <a class="nav-link" href="tel:+375445760055">+375 44 576 00 55 (А1)</a>
+              </div>
+            </article>
+            <article class="card-surface reveal p-5">
+              <h3 class="text-lg font-bold neon-glow-text-white">Запишись на занятие</h3>
+              <p class="mt-3 text-sm text-textSoft">Приходи на первый урок в студии и совершенствуйся с нами.</p>
+              <form class="mt-4 grid gap-3">
+                <input class="input-field" placeholder="Имя" type="text" />
+                <input class="input-field" placeholder="Телефон" type="tel" />
+                <button class="cta-main w-full" type="button">Хочу начать</button>
+              </form>
+            </article>
+          </div>
+          <a href="contacts.html" class="mt-6 inline-flex cta-ghost">Страница контактов</a>
+        </div>
+      </section>
+
+      <section id="socials" class="mx-auto max-w-7xl px-4 accordion-section">
+        <div class="accordion-header reveal" onclick="toggleAccordion(this)">
+          <div class="flex items-center gap-4">
+            <svg class="h-8 w-8 text-neon drop-shadow-[0_0_8px_rgba(217,70,239,0.6)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M18 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+            </svg>
+            <h2 class="text-2xl font-black md:text-4xl">Мы в соцсетях</h2>
+          </div>
+          <svg class="accordion-icon h-6 w-6 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+        <div class="accordion-content mt-4">
+          <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 pb-0">
+            <a class="card-surface reveal flex items-center gap-4 p-4 group" href="https://www.instagram.com/imperiatanca.by/" target="_blank" rel="noreferrer">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-neon/10 text-neon group-hover:bg-neon group-hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white group-hover:text-neon transition-colors">Instagram</h3>
+                <p class="text-xs text-textSoft">@imperiatanca.by</p>
+              </div>
+            </a>
+            <a class="card-surface reveal flex items-center gap-4 p-4 group" href="https://t.me/imperiatanca" target="_blank" rel="noreferrer">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white group-hover:text-blue-400 transition-colors">Telegram</h3>
+                <p class="text-xs text-textSoft">@imperiatanca</p>
+              </div>
+            </a>
+            <a class="card-surface reveal flex items-center gap-4 p-4 group" href="https://www.tiktok.com/@imperiatanca.by" target="_blank" rel="noreferrer">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white group-hover:bg-white group-hover:text-black transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white transition-colors">TikTok</h3>
+                <p class="text-xs text-textSoft">@imperiatanca.by</p>
+              </div>
+            </a>
+            <a class="card-surface reveal flex items-center gap-4 p-4 group" href="viber://add?number=375445760055">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-purple-500/10 text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white group-hover:text-purple-400 transition-colors">Viber</h3>
+                <p class="text-xs text-textSoft">+375 44 576 00 55</p>
+              </div>
+            </a>
+            <a class="card-surface reveal flex items-center gap-4 p-4 group" href="https://vk.com/imperia_tanca_minsk" target="_blank" rel="noreferrer">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600/10 text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.162 18.994c-4.828 0-7.583-3.309-7.7-8.797h2.4c.083 4.026 1.861 5.73 3.268 6.082V10.197H13.4v3.471c1.4-.153 2.852-1.728 3.352-3.471h2.259c-.373 2.18-1.956 3.754-3.108 4.414 1.152.541 2.951 1.914 3.65 4.383h-2.528c-.544-1.701-1.913-3.012-3.453-3.173v3.173h-1.4z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white group-hover:text-blue-500 transition-colors">ВКонтакте</h3>
+                <p class="text-xs text-textSoft">imperia_tanca_minsk</p>
+              </div>
+            </a>
+            <a class="card-surface reveal flex items-center gap-4 p-4 group" href="https://www.youtube.com/channel/UCENKS2QtXndmy4lzYcKWfMw" target="_blank" rel="noreferrer">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-red-600/10 text-red-500 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"></path><rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white group-hover:text-red-500 transition-colors">YouTube</h3>
+                <p class="text-xs text-textSoft">Империя Танца</p>
+              </div>
+            </a>
+          </div>
+        </div>
       </section>
     </main>
 
-    <footer class="relative z-10 border-t border-white/10 py-6">
+    <div class="floating-panel">
+      <a href="tel:+375295760055" class="floating-btn btn-phone btn-pulse" aria-label="Обратный звонок">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      </a>
+      <a href="https://t.me/imperiatanca_by" class="floating-btn btn-telegram btn-pulse" target="_blank" aria-label="Telegram">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/imperiatanca.by/" class="floating-btn btn-instagram btn-pulse" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.355 2.618 6.778 6.98 6.978 1.28.058 1.688.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+    </div>
+
+    <footer class="relative z-10 border-t border-white/10 py-10">
       <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 text-xs text-textSoft md:flex-row md:items-center md:justify-between">
         <p>Copyright © 2015 - 2026 • ООО "Империя Танца"</p>
       </div>
@@ -292,6 +476,7 @@
 
       const renderCards = (containerId, items, template) => {
         const container = document.getElementById(containerId);
+        if (!container) return;
         container.innerHTML = items.map(template).join("");
       };
 
@@ -308,33 +493,12 @@
       );
 
       renderCards(
-        "scheduleGrid",
-        appData.schedule,
-        (item) => `
-          <article class="card-surface reveal p-5">
-            <h3 class="text-lg font-bold">${item.day}</h3>
-            <p class="mt-2 text-sm text-textSoft">${item.slots}</p>
-          </article>
-        `
-      );
-
-      renderCards(
         "pricesGrid",
         appData.prices,
         (item) => `
           <article class="card-surface reveal p-5">
             <h3 class="text-lg font-bold">${item.title}</h3>
             <p class="mt-2 text-sm text-textSoft">${item.value}</p>
-          </article>
-        `
-      );
-
-      renderCards(
-        "galleryGrid",
-        appData.gallery,
-        (src, idx) => `
-          <article class="reveal overflow-hidden rounded-xl">
-            <img src="${src}" alt="Галерея ${idx + 1}" class="h-40 w-full object-cover md:h-56" />
           </article>
         `
       );

@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Студия танцев в Минске | Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех.</title>
-    <meta
-      name="description"
-      content="Студия танцев в Минске. Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех."
-    />
+    <meta name="description" content="Студия танцев в Минске. Pole Dance, Стрип-пластика, Стретчинг, Танцы на пилоне для всех." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23d946ef%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7Z%22/><path d=%22M5 20h14%22/></svg>">
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config={theme:{extend:{colors:{base:"#0f051a",textSoft:"#cab6db",neon:"#d946ef"}}}};</script>
@@ -23,11 +21,18 @@
           </svg>
           <span class="text-white neon-glow-text-white">ИМПЕРИЯ ТАНЦА</span>
         </a>
+        <button id="menuBtn" class="rounded-lg border border-white/20 px-4 py-2 text-xs font-semibold md:hidden">Меню</button>
         <nav class="hidden items-center gap-5 text-sm md:flex">
           <a href="index.html" class="nav-link">Главная</a>
           <a href="directions.html" class="nav-link">Направления</a><a href="trainers.html" class="nav-link">Тренеры</a><a href="schedule.html" class="nav-link">Расписание</a><a href="prices.html" class="nav-link">Цены</a><a href="gallery.html" class="nav-link">Галерея</a><a href="sale.html" class="nav-link">Акции</a><a href="bonus.html" class="nav-link">Бонусная карта</a><a href="contacts.html" class="nav-link">Контакты</a>
         </nav>
       </div>
+      <nav id="mobileMenu" class="hidden border-t border-white/10 px-4 py-4 md:hidden">
+        <div class="grid gap-3 text-sm">
+          <a href="index.html" class="nav-link">Главная</a>
+          <a href="directions.html" class="nav-link">Направления</a><a href="trainers.html" class="nav-link">Тренеры</a><a href="schedule.html" class="nav-link">Расписание</a><a href="prices.html" class="nav-link">Цены</a><a href="gallery.html" class="nav-link">Галерея</a><a href="sale.html" class="nav-link">Акции</a><a href="bonus.html" class="nav-link">Бонусная карта</a><a href="contacts.html" class="nav-link">Контакты</a>
+        </div>
+      </nav>
     </header>
     <main class="relative z-10 mx-auto max-w-7xl px-4 pb-12 pt-8">
       <h1 class="text-3xl font-black md:text-5xl neon-glow-text-white">Бонусная карта</h1>

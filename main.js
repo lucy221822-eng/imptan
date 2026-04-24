@@ -65,4 +65,146 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  
+  // Умное расписание: выделение текущего дня
+  const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+  const todayIndex = new Date().getDay();
+  const todayName = days[todayIndex];
+  
+  // Если сегодня воскресенье (Вс), в расписании его обычно нет, но логику сохраняем
+  const scheduleCards = document.querySelectorAll('#scheduleGrid > div');
+  scheduleCards.forEach(card => {
+    const dayLabel = card.querySelector('p')?.textContent;
+    if (dayLabel && dayLabel.includes(todayName)) {
+      card.classList.add('is-today');
+    }
+  });
+
+  // Gallery dynamic population
+  const galleryGrid = document.getElementById('galleryGrid');
+  const galleryImages = [
+    'https://imperiatanca.by/d/imperia-stars-06-24_390.jpg',
+    'https://imperiatanca.by/d/11-12-2024-imperiatanca-by_119.jpg',
+    'https://imperiatanca.by/d/22-12-2024-imperiatanca-43.jpg',
+    'https://imperiatanca.by/d/imperiatanca-party-06-2025-71.jpg',
+    'https://imperiatanca.by/d/imperiatanca-party-2025-exotic-pole-dance_49.jpg',
+    'https://imperiatanca.by/d/studiya-imperiya-tanca-053092024.jpg',
+    'https://imperiatanca.by/d/417-pole-dance-166.jpg',
+    'https://imperiatanca.by/d/425-imperia-tanca-429.jpg'
+  ];
+
+  if (galleryGrid) {
+    // На главной показываем только первые 4 фото
+    const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') || window.location.pathname === '';
+    const displayImages = isHomePage ? galleryImages.slice(0, 4) : galleryImages;
+    
+    galleryGrid.innerHTML = displayImages.map((src, idx) => `
+      <div class="reveal block group overflow-hidden rounded-xl bg-card border border-white/5 aspect-square relative cursor-pointer" onclick="openLightbox(${idx}, ${JSON.stringify(displayImages).replace(/"/g, '&quot;')})">
+        <img 
+          src="${src}" 
+          alt="Галерея ${idx + 1}" 
+          class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-base/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <span class="text-[10px] uppercase tracking-widest text-neon">Увеличить</span>
+        </div>
+      </div>
+    `).join('');
+
+    // Re-observe new elements
+    galleryGrid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  }
+
+
 });
+
+// Lightbox Logic
+let currentLightboxIndex = 0;
+let currentLightboxImages = [];
+
+function initLightbox() {
+  if (document.getElementById('lightbox')) return;
+  
+  const lightbox = document.createElement('div');
+  lightbox.id = 'lightbox';
+  lightbox.className = 'lightbox';
+  lightbox.innerHTML = `
+    <div class="lightbox-close" onclick="closeLightbox()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </div>
+    <div class="lightbox-nav lightbox-prev" onclick="prevLightbox()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </div>
+    <div class="lightbox-content">
+      <img src="" alt="" class="lightbox-img" id="lightboxImg">
+    </div>
+    <div class="lightbox-nav lightbox-next" onclick="nextLightbox()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
+  `;
+  document.body.appendChild(lightbox);
+  
+  // Close on backdrop click
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') prevLightbox();
+    if (e.key === 'ArrowRight') nextLightbox();
+  });
+}
+
+function openLightbox(index, images) {
+  initLightbox();
+  currentLightboxIndex = index;
+  currentLightboxImages = images;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function updateLightbox() {
+  const img = document.getElementById('lightboxImg');
+  const counter = document.getElementById('lightboxCounter');
+  img.src = currentLightboxImages[currentLightboxIndex];
+  counter.textContent = `${currentLightboxIndex + 1} / ${currentLightboxImages.length}`;
+}
+
+function nextLightbox() {
+  currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxImages.length;
+  updateLightbox();
+}
+
+function prevLightbox() {
+  currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
+  updateLightbox();
+}
+
+// Логика раскрывающихся блоков (аккордеонов)
+function toggleAccordion(header) {
+  const content = header.nextElementSibling;
+  const isActive = content.classList.contains('active');
+  
+  if (isActive) {
+    content.classList.remove('active');
+    header.classList.remove('active');
+  } else {
+    content.classList.add('active');
+    header.classList.add('active');
+    // Небольшая задержка для плавного появления внутренних элементов reveal
+    setTimeout(() => {
+      content.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    }, 100);
+  }
+}
+
