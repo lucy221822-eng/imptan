@@ -208,3 +208,68 @@ function toggleAccordion(header) {
   }
 }
 
+
+
+// Callback Modal Logic
+document.addEventListener('DOMContentLoaded', () => {
+  const callbackModal = document.getElementById('callbackModal');
+  const modalContainer = document.getElementById('modalContainer');
+  const openModalBtns = document.querySelectorAll('.open-callback-modal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const modalOverlay = document.getElementById('modalOverlay');
+
+  if (callbackModal && modalContainer) {
+    const openModal = (e) => {
+      if (e) e.preventDefault();
+      callbackModal.classList.remove('hidden');
+      callbackModal.classList.add('flex');
+      setTimeout(() => {
+        modalContainer.classList.remove('scale-95', 'opacity-0');
+        modalContainer.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    };
+
+    const closeModal = () => {
+      modalContainer.classList.remove('scale-100', 'opacity-100');
+      modalContainer.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        callbackModal.classList.add('hidden');
+        callbackModal.classList.remove('flex');
+      }, 300);
+    };
+
+    openModalBtns.forEach(btn => btn.addEventListener('click', openModal));
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+    if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+
+    // Form submission
+    const form = document.getElementById('callbackForm');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправка...';
+        
+        // Simulate API call
+        setTimeout(() => {
+          submitBtn.textContent = 'Спасибо! Мы перезвоним';
+          submitBtn.classList.remove('bg-neon');
+          submitBtn.classList.add('bg-green-500');
+          
+          setTimeout(() => {
+            closeModal();
+            setTimeout(() => {
+              form.reset();
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
+              submitBtn.classList.remove('bg-green-500');
+              submitBtn.classList.add('bg-neon');
+            }, 500);
+          }, 2000);
+        }, 1000);
+      });
+    }
+  }
+});

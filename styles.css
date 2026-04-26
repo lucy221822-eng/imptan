@@ -621,3 +621,14 @@ body {
   .lightbox-next { right: 10px; }
 }
 
+
+/* Modal Animations */
+.modal-open #modalContainer {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.modal-closed #modalContainer {
+  transform: scale(0.95);
+  opacity: 0;
+}
