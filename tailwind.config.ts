@@ -9,7 +9,6 @@ const config: Config = {
       colors: {
         base: "#0f051a",
         textSoft: "#cab6db",
-        primary: "#d946ef",
         neon: "#d946ef",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
