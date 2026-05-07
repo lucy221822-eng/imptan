@@ -107,44 +107,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 const time = timeMatch[1];
                 const slot = { time: time, days: [] };
 
+                // Проверяем, не дублируется ли время в следующей строке (как в 18:30)
+                const nextRow = data[i + 1] || [];
+                const isDoubleTimeRow = nextRow[0] === time;
+                const dataStartOffset = isDoubleTimeRow ? 2 : 1;
+
                 // Индексы колонок: Пн(2), Вт(8), Ср(14), Чт(20), Пт(26), Сб(32)
                 const dayIndices = [2, 8, 14, 20, 26, 32];
                 
                 dayIndices.forEach(idx => {
                     const items = [];
                     
-                    // Проверяем 4 строки под временем для поиска групп (по 2 строки на группу)
-                    for (let step = 1; step <= 3; step += 2) {
-                        const classRow = data[i + step] || [];
-                        const detailRow = data[i + step + 1] || [];
+                    // Проверяем несколько пар строк под временем
+                    // Для 18:30 данных больше, поэтому проверяем до 6 строк (3 пары)
+                    for (let step = 0; step < 6; step += 2) {
+                        const classRow = data[i + dataStartOffset + step] || [];
+                        const detailRow = data[i + dataStartOffset + step + 1] || [];
                         
                         let id = (classRow[idx] || '').trim();
                         let title = (classRow[idx + 1] || '').trim();
                         const teacher = (detailRow[idx + 1] || '').trim();
                         const hall = (detailRow[idx + 3] || detailRow[idx + 2] || '').trim();
                         
+                        // Если строка пустая или это начало следующего временного слота
+                        if (!id && !title && !teacher) continue;
+                        if (classRow[0] && classRow[0].match(/^\d{1,2}:\d{2}$/)) break;
+
                         // Исправляем ситуацию, когда ID и название перепутаны или склеены
-                        if (id && id.length > 10 && !title) {
+                        if (id && id.length > 15 && !title) {
                             title = id;
                             id = '';
                         }
                         
-                        // Если в ID попало название (например "POLE DANCE")
                         if (id && id.match(/[А-Яа-яA-Za-z]/) && !id.match(/[CUcu]-\d+/)) {
                             if (!title) title = id;
                             id = '';
                         }
-                        
-                        // Поиск длительности и статуса "набор" в строке деталей
+
+                        // Поиск длительности и статуса "набор"
                         let duration = '';
                         let isNabor = false;
                         
-                        // Проверяем все ячейки в блоке группы на наличие слова "набор"
                         const checkRowForNabor = (r) => (r || []).some(cell => (cell || '').toLowerCase().includes('набор'));
-                        
-                        if (checkRowForNabor(classRow) || checkRowForNabor(detailRow)) {
-                            isNabor = true;
-                        }
+                        if (checkRowForNabor(classRow) || checkRowForNabor(detailRow)) isNabor = true;
 
                         for (let k = idx; k < idx + 6; k++) {
                             const val = (detailRow[k] || '').trim().toLowerCase();
@@ -159,13 +164,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (items.length > 0) {
                         slot.days.push({ items, isEmpty: false });
                     } else {
-                        const isRent = true; // Если ничего не нашли, считаем арендой
-                        slot.days.push({ isEmpty: true, isRent: isRent });
+                        slot.days.push({ isEmpty: true, isRent: true });
                     }
                 });
                 
                 timeSlots.push(slot);
-                i += 3; // Пропускаем блок строк одного временного слота
+                // Пропускаем обработанный блок
+                i += (isDoubleTimeRow ? 6 : 4); 
             }
         }
 
