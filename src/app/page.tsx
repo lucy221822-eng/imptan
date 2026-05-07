@@ -77,8 +77,8 @@ export default function Home() {
             </div>
             
             <h1 className="text-6xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter">
-              ТВОЕ ТЕЛО<span className="text-primary text-glow">.</span><br />
-              ТВОИ ПРАВИЛА<span className="text-primary text-glow">.</span>
+              ТВОЕ ТЕЛО<span className="text-primary neon-glow-text">.</span><br />
+              ТВОИ ПРАВИЛА<span className="text-primary neon-glow-text">.</span>
             </h1>
             
             <p className="text-lg text-textSoft leading-relaxed max-w-xl mx-auto md:mx-0">
