@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
   --background: 260 60% 6%;
   --foreground: 260 20% 90%;
@@ -23,6 +25,9 @@
   --input: 260 30% 15%;
   --ring: 295 85% 61%;
   --radius: 0.75rem;
+  
+  --orb-1-rgb: 217, 70, 239;
+  --orb-2-rgb: 124, 58, 237;
 }
 
 @layer base {
@@ -31,22 +36,54 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Manrope', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
 .bg-orb {
-  @apply absolute blur-[120px] rounded-full opacity-30 pointer-events-none;
+  @apply fixed blur-[100px] rounded-full opacity-40 pointer-events-none z-0;
 }
 
 .bg-orb-1 {
-  @apply w-[500px] h-[500px] bg-neon -top-48 -left-48;
+  @apply w-[600px] h-[600px] -top-48 -left-48;
+  background: radial-gradient(circle, rgba(var(--orb-1-rgb), 0.45) 0%, rgba(var(--orb-1-rgb), 0) 68%);
 }
 
 .bg-orb-2 {
-  @apply w-[400px] h-[400px] bg-indigo-600 -bottom-24 -right-24;
+  @apply w-[500px] h-[500px] -bottom-24 -right-24;
+  background: radial-gradient(circle, rgba(var(--orb-2-rgb), 0.5) 0%, rgba(var(--orb-2-rgb), 0) 65%);
 }
 
 .bg-noise {
   @apply fixed inset-0 opacity-[0.03] pointer-events-none z-0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.card-surface {
+  @apply border border-white/10 bg-white/[0.03] backdrop-blur-md rounded-2xl transition-all duration-300;
+  background: linear-gradient(160deg, rgba(56, 22, 84, 0.4), rgba(24, 12, 43, 0.6));
+}
+
+.card-surface:hover {
+  @apply -translate-y-1 border-primary/50 shadow-[0_8px_30px_rgba(217,70,239,0.2)];
+}
+
+.neon-glow-text {
+  text-shadow: 0 0 7px rgba(217,70,239,0.8), 0 0 14px rgba(217,70,239,0.5);
+}
+
+.neon-glow-text-white {
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.6), 0 0 10px rgba(217, 70, 239, 0.4);
+}
+
+.popular-card {
+  @apply relative overflow-hidden border-primary/60 !bg-primary/10;
+}
+
+.popular-card::after {
+  content: "ПОПУЛЯРНЫЙ";
+  @apply absolute top-4 -right-8 bg-primary text-white px-8 py-1 text-[10px] font-black rotate-45 shadow-[0_0_10px_rgba(217,70,239,0.5)];
 }
