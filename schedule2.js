@@ -127,14 +127,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         let duration = '';
                         let isNabor = false;
                         
+                        // Проверяем все ячейки в блоке группы на наличие слова "набор"
+                        const checkRowForNabor = (r) => (r || []).some(cell => (cell || '').toLowerCase().includes('набор'));
+                        
+                        if (checkRowForNabor(classRow) || checkRowForNabor(detailRow)) {
+                            isNabor = true;
+                        }
+
                         for (let k = idx; k < idx + 6; k++) {
                             const val = (detailRow[k] || '').trim().toLowerCase();
                             if (val.match(/\d([.,]\d)?\s*ч/)) duration = val;
-                            if (val.includes('набор')) isNabor = true;
                         }
-                        
-                        // Дополнительная проверка набора в названии или преподавателе
-                        if ((title + teacher).toLowerCase().includes('набор')) isNabor = true;
 
                         if (title || teacher || id) {
                             items.push({ id, title, teacher, hall, duration, isNabors: isNabor });
@@ -204,18 +207,18 @@ document.addEventListener('DOMContentLoaded', () => {
             hash = groupKey.charCodeAt(i) + ((hash << 5) - hash);
         }
         
-        // Яркие и насыщенные цвета для лучшей видимости
+        // Бледные и пастельные цвета для карточек
         const colors = [
-            'bg-indigo-600',
-            'bg-violet-600',
-            'bg-fuchsia-600',
-            'bg-rose-600',
-            'bg-pink-600',
-            'bg-purple-600',
-            'bg-cyan-600',
-            'bg-blue-600',
-            'bg-emerald-600',
-            'bg-amber-600'
+            'bg-indigo-500/30',
+            'bg-violet-500/30',
+            'bg-fuchsia-500/30',
+            'bg-rose-500/30',
+            'bg-pink-500/30',
+            'bg-purple-500/30',
+            'bg-cyan-500/30',
+            'bg-blue-500/30',
+            'bg-emerald-500/30',
+            'bg-amber-500/30'
         ];
         
         return colors[Math.abs(hash) % colors.length];
