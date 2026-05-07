@@ -121,18 +121,46 @@ document.addEventListener('DOMContentLoaded', () => {
                     const id = classRow[idx] || '';
                     const title = classRow[idx + 1] || '';
                     const teacher = detailRow[idx + 1] || '';
-                    const hall = detailRow[idx + 3] || detailRow[idx + 2] || ''; // В разных строках может быть по-разному
+                    const hall = detailRow[idx + 3] || detailRow[idx + 2] || '';
+                    const status = detailRow[idx + 5] || '';
                     
+                    // Проверка на наличие второй группы (обычно идет следующими строками)
+                    const classRow2 = data[i + 3] || [];
+                    const detailRow2 = data[i + 4] || [];
+                    const id2 = classRow2[idx] || '';
+                    const title2 = classRow2[idx + 1] || '';
+                    const teacher2 = detailRow2[idx + 1] || '';
+                    const hall2 = detailRow2[idx + 3] || detailRow2[idx + 2] || '';
+                    const status2 = detailRow2[idx + 5] || '';
+
                     if (title || teacher) {
-                        slot.days.push({
+                        const items = [];
+                        
+                        // Добавляем первую группу
+                        items.push({
                             id,
                             title,
                             teacher,
                             hall,
+                            isNabors: status.toLowerCase().includes('набор') || title.toLowerCase().includes('набор') || teacher.toLowerCase().includes('набор')
+                        });
+
+                        // Если есть вторая группа в той же ячейке
+                        if (title2 || teacher2) {
+                            items.push({
+                                id: id2,
+                                title: title2,
+                                teacher: teacher2,
+                                hall: hall2,
+                                isNabors: status2.toLowerCase().includes('набор') || title2.toLowerCase().includes('набор') || teacher2.toLowerCase().includes('набор')
+                            });
+                        }
+
+                        slot.days.push({
+                            items,
                             isEmpty: false
                         });
                     } else {
-                        // Проверяем, нет ли там текста "Аренда залов" или пустоты
                         const isRent = title.toLowerCase().includes('аренда') || teacher.toLowerCase().includes('аренда');
                         slot.days.push({
                             isEmpty: true,
@@ -157,20 +185,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (day.isEmpty) {
                     html += `<td class="p-2 md:p-3 text-center text-xs text-white/20 italic">Аренда залов</td>`;
                 } else {
-                    const bgColor = getBgColor(day.id || day.title);
-                    html += `
-                        <td class="p-2 md:p-3 align-top">
-                            <div class="space-y-1 min-w-[140px]">
+                    html += `<td class="p-2 md:p-3 align-top"><div class="flex flex-col gap-3 min-w-[140px]">`;
+                    
+                    day.items.forEach(item => {
+                        const bgColor = getBgColor(item.id || item.title);
+                        html += `
+                            <div class="space-y-1">
                                 <span class="block rounded-lg ${bgColor} px-2 py-1 text-white font-medium">
-                                    ${day.id ? day.id + ' • ' : ''}${day.title}
+                                    ${item.id ? item.id + ' • ' : ''}${item.title}
                                 </span>
                                 <p class="text-[10px] md:text-xs text-textSoft leading-tight">
-                                    ${day.teacher}${day.hall ? ' • ' + day.hall : ''}
+                                    ${item.teacher}${item.hall ? ' • ' + item.hall : ''}
                                 </p>
-                                <span class="inline-block rounded-lg bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300">Запись открыта</span>
+                                ${item.isNabors ? '<span class="inline-block rounded-lg bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300">Запись открыта</span>' : ''}
                             </div>
-                        </td>
-                    `;
+                        `;
+                    });
+
+                    html += `</div></td>`;
                 }
             });
             
@@ -181,14 +213,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getBgColor(text) {
         const t = (text || '').toLowerCase();
-        if (t.includes('pole dance')) return 'bg-indigo-500/40';
-        if (t.includes('exotic')) return 'bg-violet-500/40';
-        if (t.includes('стретчинг')) return 'bg-fuchsia-500/40';
-        if (t.includes('стрип')) return 'bg-rose-500/40';
-        if (t.includes('frame up')) return 'bg-pink-500/40';
-        if (t.includes('art')) return 'bg-purple-500/40';
-        if (t.includes('sport')) return 'bg-cyan-500/40';
-        return 'bg-white/10';
+        
+        // Генерируем цвет на основе номера группы или текста
+        // Если есть номер группы (например #C-10), используем его для стабильного цвета
+        let hash = 0;
+        for (let i = 0; i < t.length; i++) {
+            hash = t.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        
+        const colors = [
+            'bg-indigo-500/40',
+            'bg-violet-500/40',
+            'bg-fuchsia-500/40',
+            'bg-rose-500/40',
+            'bg-pink-500/40',
+            'bg-purple-500/40',
+            'bg-cyan-500/40',
+            'bg-blue-500/40',
+            'bg-emerald-500/40',
+            'bg-amber-500/40'
+        ];
+        
+        return colors[Math.abs(hash) % colors.length];
     }
 
     fetchSchedule();
