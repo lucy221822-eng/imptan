@@ -118,10 +118,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         const classRow = data[i + step] || [];
                         const detailRow = data[i + step + 1] || [];
                         
-                        const id = (classRow[idx] || '').trim();
-                        const title = (classRow[idx + 1] || '').trim();
+                        let id = (classRow[idx] || '').trim();
+                        let title = (classRow[idx + 1] || '').trim();
                         const teacher = (detailRow[idx + 1] || '').trim();
                         const hall = (detailRow[idx + 3] || detailRow[idx + 2] || '').trim();
+                        
+                        // Исправляем ситуацию, когда ID и название перепутаны или склеены
+                        if (id && id.length > 10 && !title) {
+                            title = id;
+                            id = '';
+                        }
+                        
+                        // Если в ID попало название (например "POLE DANCE")
+                        if (id && id.match(/[А-Яа-яA-Za-z]/) && !id.match(/[CUcu]-\d+/)) {
+                            if (!title) title = id;
+                            id = '';
+                        }
                         
                         // Поиск длительности и статуса "набор" в строке деталей
                         let duration = '';
@@ -170,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     day.items.forEach(item => {
                         const bgColor = getBgColor(item.id || item.title);
                         html += `
-                            <div class="relative overflow-hidden rounded-lg ${bgColor} p-2 shadow-lg border border-white/5">
+                            <div class="relative overflow-hidden rounded-lg ${bgColor} p-2 shadow-lg border border-white/10 hover:border-white/30 transition-colors">
                                 <div class="flex items-start justify-between gap-1 mb-1">
                                     <span class="text-[11px] font-black text-white leading-tight uppercase tracking-tight">
                                         ${item.id ? item.id + ' • ' : ''}${item.title}
@@ -179,8 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                                 <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-white/90 font-bold leading-tight">
                                     <span class="opacity-100">${item.teacher}</span>
-                                    ${item.hall ? `<span class="text-[9px] opacity-70 px-1 border border-white/20 rounded">ЗАЛ ${item.hall.toUpperCase()}</span>` : ''}
-                                    ${item.duration ? `<span class="text-[9px] opacity-70">${item.duration.toUpperCase()}</span>` : ''}
+                                    ${item.hall && !item.teacher.includes(item.hall) ? `<span class="text-[9px] opacity-70 px-1 border border-white/20 rounded uppercase">ЗАЛ ${item.hall}</span>` : ''}
+                                    ${item.duration ? `<span class="text-[9px] opacity-70 uppercase">${item.duration}</span>` : ''}
                                 </div>
                             </div>
                         `;
@@ -207,18 +219,18 @@ document.addEventListener('DOMContentLoaded', () => {
             hash = groupKey.charCodeAt(i) + ((hash << 5) - hash);
         }
         
-        // Бледные и пастельные цвета для карточек
+        // Расширенная палитра контрастных цветов
         const colors = [
-            'bg-indigo-500/30',
-            'bg-violet-500/30',
-            'bg-fuchsia-500/30',
-            'bg-rose-500/30',
-            'bg-pink-500/30',
-            'bg-purple-500/30',
-            'bg-cyan-500/30',
-            'bg-blue-500/30',
-            'bg-emerald-500/30',
-            'bg-amber-500/30'
+            'bg-[#312e81]/40', // Indigo dark
+            'bg-[#581c87]/40', // Purple dark
+            'bg-[#701a75]/40', // Fuchsia dark
+            'bg-[#881337]/40', // Rose dark
+            'bg-[#1e3a8a]/40', // Blue dark
+            'bg-[#134e4a]/40', // Teal dark
+            'bg-[#064e3b]/40', // Emerald dark
+            'bg-[#422006]/40', // Amber dark
+            'bg-[#3f2b11]/40', // Brown dark
+            'bg-[#1c1917]/60'  // Stone dark
         ];
         
         return colors[Math.abs(hash) % colors.length];
