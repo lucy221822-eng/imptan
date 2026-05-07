@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Индексы колонок: Пн(2), Вт(8), Ср(14), Чт(20), Пт(26), Сб(32)
                 const dayIndices = [2, 8, 14, 20, 26, 32];
                 
-                dayIndices.forEach(idx => {
+                dayIndices.forEach((idx, dayIdx) => {
                     const items = [];
                     
                     // Проверяем несколько пар строк под временем
@@ -126,12 +126,30 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         let id = (classRow[idx] || '').trim();
                         let title = (classRow[idx + 1] || '').trim();
-                        const teacher = (detailRow[idx + 1] || '').trim();
-                        const hall = (detailRow[idx + 3] || detailRow[idx + 2] || '').trim();
-                        
+                        let teacher = (detailRow[idx + 1] || '').trim();
+                        let hall = (detailRow[idx + 3] || detailRow[idx + 2] || '').trim();
+
+                        // Поиск статуса "набор" - теперь проверяем ячейку СРАЗУ ПОСЛЕ названия (idx + 2)
+                        let isNabor = false;
+                        const naborCell = (classRow[idx + 2] || '').trim().toLowerCase();
+                        if (naborCell.includes('набор')) isNabor = true;
+
+                        // Если не нашли в специальной ячейке, проверяем все связанные ячейки на всякий случай
+                        if (!isNabor) {
+                            const combinedText = `${id} ${title} ${teacher} ${naborCell}`.toLowerCase();
+                            if (combinedText.includes('набор')) isNabor = true;
+                        }
+
+                        // Поиск длительности
+                        let duration = '';
+                        for (let k = idx; k < idx + 6; k++) {
+                            const val = (detailRow[k] || '').trim().toLowerCase();
+                            if (val.match(/\d([.,]\d)?\s*ч/)) duration = val;
+                        }
+
                         // Если строка пустая или это начало следующего временного слота
                         if (!id && !title && !teacher) continue;
-                        if (classRow[0] && classRow[0].match(/^\d{1,2}:\d{2}$/)) break;
+                        if (classRow[0] && classRow[0].match(/^\d{1,2}:\d{2}$/) && step > 0) break;
 
                         // Исправляем ситуацию, когда ID и название перепутаны или склеены
                         if (id && id.length > 15 && !title) {
@@ -142,18 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (id && id.match(/[А-Яа-яA-Za-z]/) && !id.match(/[CUcu]-\d+/)) {
                             if (!title) title = id;
                             id = '';
-                        }
-
-                        // Поиск длительности и статуса "набор"
-                        let duration = '';
-                        let isNabor = false;
-                        
-                        const checkRowForNabor = (r) => (r || []).some(cell => (cell || '').toLowerCase().includes('набор'));
-                        if (checkRowForNabor(classRow) || checkRowForNabor(detailRow)) isNabor = true;
-
-                        for (let k = idx; k < idx + 6; k++) {
-                            const val = (detailRow[k] || '').trim().toLowerCase();
-                            if (val.match(/\d([.,]\d)?\s*ч/)) duration = val;
                         }
 
                         if (title || teacher || id) {
@@ -185,9 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     html += `<td class="p-2 md:p-3 align-top"><div class="flex flex-col gap-2 min-w-[150px]">`;
                     
                     day.items.forEach(item => {
-                        const bgColor = getBgColor(item.id || item.title);
+                        const bgStyle = getBgStyle(item.id || item.title);
                         html += `
-                            <div class="relative overflow-hidden rounded-lg ${bgColor} p-2 shadow-lg border border-white/10 hover:border-white/30 transition-colors">
+                            <div class="relative overflow-hidden rounded-lg p-2 shadow-lg border hover:border-white/50 transition-colors" style="${bgStyle}">
                                 <div class="flex items-start justify-between gap-1 mb-1">
                                     <span class="text-[11px] font-black text-white leading-tight uppercase tracking-tight">
                                         ${item.id ? item.id + ' • ' : ''}${item.title}
@@ -212,33 +218,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function getBgColor(text) {
+    function getBgStyle(text) {
         const t = (text || '').trim().toLowerCase();
         
-        // Извлекаем код группы (например, 'c-10' из '#c-10')
-        const groupMatch = t.match(/[cu]-\d+/);
-        const groupKey = groupMatch ? groupMatch[0] : t;
+        // Извлекаем номер группы (число от 001 до 999)
+        const groupMatch = t.match(/\d+/);
+        const groupNumber = groupMatch ? parseInt(groupMatch[0]) : 0;
         
-        let hash = 0;
-        for (let i = 0; i < groupKey.length; i++) {
-            hash = groupKey.charCodeAt(i) + ((hash << 5) - hash);
-        }
+        // Логика золотого угла для максимального контраста соседних номеров
+        const goldenAngle = 137.5;
+        const hue = (groupNumber * goldenAngle) % 360;
+        const saturation = 70;
+        const lightness = 60;
         
-        // Расширенная палитра контрастных цветов
-        const colors = [
-            'bg-[#312e81]/40', // Indigo dark
-            'bg-[#581c87]/40', // Purple dark
-            'bg-[#701a75]/40', // Fuchsia dark
-            'bg-[#881337]/40', // Rose dark
-            'bg-[#1e3a8a]/40', // Blue dark
-            'bg-[#134e4a]/40', // Teal dark
-            'bg-[#064e3b]/40', // Emerald dark
-            'bg-[#422006]/40', // Amber dark
-            'bg-[#3f2b11]/40', // Brown dark
-            'bg-[#1c1917]/60'  // Stone dark
-        ];
-        
-        return colors[Math.abs(hash) % colors.length];
+        // Возвращаем объект для использования в inline-стиле
+        return `background-color: hsl(${hue}, ${saturation}%, ${lightness}%, 0.4); border-color: hsl(${hue}, ${saturation}%, ${lightness}%, 0.6);`;
     }
 
     fetchSchedule();
