@@ -118,41 +118,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dayIndices = [2, 8, 14, 20, 26, 32];
                 
                 dayIndices.forEach(idx => {
-                    const id = classRow[idx] || '';
-                    const title = classRow[idx + 1] || '';
-                    const teacher = detailRow[idx + 1] || '';
-                    const hall = detailRow[idx + 3] || detailRow[idx + 2] || '';
-                    const status = detailRow[idx + 5] || '';
+                    const id = (classRow[idx] || '').trim();
+                    const title = (classRow[idx + 1] || '').trim();
+                    const teacher = (detailRow[idx + 1] || '').trim();
+                    const hall = (detailRow[idx + 3] || detailRow[idx + 2] || '').trim();
+                    const statusInfo = (detailRow[idx + 5] || '').trim().toLowerCase();
                     
-                    // Проверка на наличие второй группы (обычно идет следующими строками)
-                    const classRow2 = data[i + 3] || [];
-                    const detailRow2 = data[i + 4] || [];
-                    const id2 = classRow2[idx] || '';
-                    const title2 = classRow2[idx + 1] || '';
-                    const teacher2 = detailRow2[idx + 1] || '';
-                    const hall2 = detailRow2[idx + 3] || detailRow2[idx + 2] || '';
-                    const status2 = detailRow2[idx + 5] || '';
+                    // Проверка на наличие второй группы (обычно идет сразу следующей парой строк)
+                    const classRow2 = data[i + 2] || []; // Попробуем i+2, так как i+1 это уже detailRow
+                    const detailRow2 = data[i + 3] || [];
+                    const id2 = (classRow2[idx] || '').trim();
+                    const title2 = (classRow2[idx + 1] || '').trim();
+                    const teacher2 = (detailRow2[idx + 1] || '').trim();
+                    const hall2 = (detailRow2[idx + 3] || detailRow2[idx + 2] || '').trim();
+                    const statusInfo2 = (detailRow2[idx + 5] || '').trim().toLowerCase();
 
                     if (title || teacher) {
                         const items = [];
                         
+                        // Функция для строгой проверки набора
+                        const checkIsNabor = (t, teach, stat) => {
+                            const combined = `${t} ${teach} ${stat}`.toLowerCase();
+                            return combined.includes('набор') && !combined.includes('аренда');
+                        };
+
                         // Добавляем первую группу
                         items.push({
                             id,
                             title,
                             teacher,
                             hall,
-                            isNabors: status.toLowerCase().includes('набор') || title.toLowerCase().includes('набор') || teacher.toLowerCase().includes('набор')
+                            isNabors: checkIsNabor(title, teacher, statusInfo)
                         });
 
-                        // Если есть вторая группа в той же ячейке
-                        if (title2 || teacher2) {
+                        // Если во второй строке есть данные и это не повтор первой группы
+                        if ((title2 || teacher2) && (title2 !== title || id2 !== id)) {
                             items.push({
                                 id: id2,
                                 title: title2,
                                 teacher: teacher2,
                                 hall: hall2,
-                                isNabors: status2.toLowerCase().includes('набор') || title2.toLowerCase().includes('набор') || teacher2.toLowerCase().includes('набор')
+                                isNabors: checkIsNabor(title2, teacher2, statusInfo2)
                             });
                         }
 
@@ -161,10 +167,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             isEmpty: false
                         });
                     } else {
-                        const isRent = title.toLowerCase().includes('аренда') || teacher.toLowerCase().includes('аренда');
+                        const combinedText = (title + teacher).toLowerCase();
+                        const isRent = combinedText.includes('аренда') || (!title && !teacher);
                         slot.days.push({
                             isEmpty: true,
-                            isRent: isRent || (!title && !teacher)
+                            isRent: isRent
                         });
                     }
                 });
@@ -212,26 +219,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getBgColor(text) {
-        const t = (text || '').toLowerCase();
+        const t = (text || '').trim().toLowerCase();
         
-        // Генерируем цвет на основе номера группы или текста
-        // Если есть номер группы (например #C-10), используем его для стабильного цвета
+        // Извлекаем код группы (например, 'c-10' из '#c-10')
+        const groupMatch = t.match(/[cu]-\d+/);
+        const groupKey = groupMatch ? groupMatch[0] : t;
+        
         let hash = 0;
-        for (let i = 0; i < t.length; i++) {
-            hash = t.charCodeAt(i) + ((hash << 5) - hash);
+        for (let i = 0; i < groupKey.length; i++) {
+            hash = groupKey.charCodeAt(i) + ((hash << 5) - hash);
         }
         
+        // Яркие и насыщенные цвета для лучшей видимости
         const colors = [
-            'bg-indigo-500/40',
-            'bg-violet-500/40',
-            'bg-fuchsia-500/40',
-            'bg-rose-500/40',
-            'bg-pink-500/40',
-            'bg-purple-500/40',
-            'bg-cyan-500/40',
-            'bg-blue-500/40',
-            'bg-emerald-500/40',
-            'bg-amber-500/40'
+            'bg-indigo-600',
+            'bg-violet-600',
+            'bg-fuchsia-600',
+            'bg-rose-600',
+            'bg-pink-600',
+            'bg-purple-600',
+            'bg-cyan-600',
+            'bg-blue-600',
+            'bg-emerald-600',
+            'bg-amber-600'
         ];
         
         return colors[Math.abs(hash) % colors.length];
