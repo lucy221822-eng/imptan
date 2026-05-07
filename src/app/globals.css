@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 260 60% 6%;
+  --foreground: 260 20% 90%;
+  --card: 260 60% 8%;
+  --card-foreground: 260 20% 90%;
+  --popover: 260 60% 6%;
+  --popover-foreground: 260 20% 90%;
+  --primary: 295 85% 61%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 260 30% 15%;
+  --secondary-foreground: 260 20% 90%;
+  --muted: 260 30% 15%;
+  --muted-foreground: 260 20% 70%;
+  --accent: 260 30% 20%;
+  --accent-foreground: 260 20% 90%;
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 260 20% 90%;
+  --border: 260 30% 15%;
+  --input: 260 30% 15%;
+  --ring: 295 85% 61%;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.bg-orb {
+  @apply absolute blur-[120px] rounded-full opacity-30 pointer-events-none;
+}
+
+.bg-orb-1 {
+  @apply w-[500px] h-[500px] bg-neon -top-48 -left-48;
+}
+
+.bg-orb-2 {
+  @apply w-[400px] h-[400px] bg-indigo-600 -bottom-24 -right-24;
+}
+
+.bg-noise {
+  @apply fixed inset-0 opacity-[0.03] pointer-events-none z-0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
