@@ -43,7 +43,7 @@
           <span class="rounded-full border border-white/20 px-3 py-1">Запись обязательна</span>
           <span class="rounded-full border border-white/20 px-3 py-1">11:00–23:00</span>
         </div>
-        <div class="overflow-x-auto rounded-xl border border-white/10 relative min-h-[400px]">
+        <div class="overflow-auto rounded-xl border border-white/10 relative max-h-[85vh]">
           <div id="loadingOverlay" class="absolute inset-0 z-30 flex items-center justify-center bg-base/60 backdrop-blur-sm">
             <div class="flex flex-col items-center gap-3">
               <div class="h-10 w-10 animate-spin rounded-full border-4 border-neon border-t-transparent"></div>
@@ -51,9 +51,9 @@
             </div>
           </div>
           <table class="w-full border-collapse text-sm">
-            <thead>
+            <thead class="sticky top-0 z-30 bg-base shadow-md">
               <tr class="bg-white/5 text-left">
-                <th class="p-2 md:p-3 font-semibold sticky left-0 bg-base z-20 border-r border-white/10">Время</th>
+                <th class="p-2 md:p-3 font-semibold sticky left-0 top-0 bg-base z-40 border-r border-white/10">Время</th>
                 <th class="p-2 md:p-3 font-semibold text-center">Пн</th>
                 <th class="p-2 md:p-3 font-semibold text-center">Вт</th>
                 <th class="p-2 md:p-3 font-semibold text-center">Ср</th>

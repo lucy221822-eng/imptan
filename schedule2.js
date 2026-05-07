@@ -128,6 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         let title = (classRow[idx + 1] || '').trim();
                         let teacher = (detailRow[idx + 1] || '').trim();
                         let hall = (detailRow[idx + 3] || detailRow[idx + 2] || '').trim();
+                        
+                        // Убираем слово "ЗАЛ" из начала строки, если оно там есть (чтобы не дублировалось в шаблоне)
+                        hall = hall.replace(/ЗАЛ\s+/gi, '').trim();
 
                         // Поиск статуса "набор" - теперь проверяем ячейку СРАЗУ ПОСЛЕ названия (idx + 2)
                         let isNabor = false;
@@ -202,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                                 <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-white/90 font-bold leading-tight">
                                     <span class="opacity-100">${item.teacher}</span>
-                                    ${item.hall && !item.teacher.includes(item.hall) ? `<span class="text-[9px] opacity-70 px-1 border border-white/20 rounded uppercase">ЗАЛ ${item.hall}</span>` : ''}
+                                    ${item.hall ? `<span class="text-[9px] opacity-70 px-1 border border-white/20 rounded uppercase">ЗАЛ ${item.hall}</span>` : ''}
                                     ${item.duration ? `<span class="text-[9px] opacity-70 uppercase">${item.duration}</span>` : ''}
                                 </div>
                             </div>
