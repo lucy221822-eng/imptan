@@ -5,9 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Расписание занятий 2 | ИМПЕРИЯ ТАНЦА</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23d946ef%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7Z%22/><path d=%22M5 20h14%22/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={theme:{extend:{colors:{base:"#0f051a",textSoft:"#cab6db",neon:"#d946ef"}}}};</script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { base: "#0f051a", textSoft: "#cab6db", neon: "#d946ef" },
+            fontFamily: {
+              sans: ['Manrope', 'sans-serif'],
+              display: ['Montserrat', 'sans-serif'],
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      body { font-family: 'Manrope', sans-serif; }
+      h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+      .neon-glow-text-white {
+        text-shadow: 0 0 20px rgba(255,255,255,0.3);
+      }
+    </style>
   </head>
   <body class="bg-base text-white">
     <div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div><div class="bg-noise"></div>

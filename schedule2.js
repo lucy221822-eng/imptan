@@ -125,13 +125,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     const statusInfo = (detailRow[idx + 5] || '').trim().toLowerCase();
                     
                     // Проверка на наличие второй группы (обычно идет сразу следующей парой строк)
-                    const classRow2 = data[i + 2] || []; // Попробуем i+2, так как i+1 это уже detailRow
+                    const classRow2 = data[i + 2] || [];
                     const detailRow2 = data[i + 3] || [];
                     const id2 = (classRow2[idx] || '').trim();
                     const title2 = (classRow2[idx + 1] || '').trim();
                     const teacher2 = (detailRow2[idx + 1] || '').trim();
                     const hall2 = (detailRow2[idx + 3] || detailRow2[idx + 2] || '').trim();
                     const statusInfo2 = (detailRow2[idx + 5] || '').trim().toLowerCase();
+
+                    // Функция для извлечения длительности (1ч, 1.5ч и т.д.)
+                    const extractDuration = (row, startIdx) => {
+                        // Ищем в ближайших 10 ячейках строки слово с "ч" или "час"
+                        for (let k = startIdx; k < startIdx + 10; k++) {
+                            const val = (row[k] || '').toLowerCase();
+                            if (val.match(/\d([.,]\d)?\s*ч/)) return val;
+                        }
+                        return '';
+                    };
+
+                    const duration1 = extractDuration(detailRow, idx);
+                    const duration2 = extractDuration(detailRow2, idx);
 
                     if (title || teacher) {
                         const items = [];
@@ -148,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             title,
                             teacher,
                             hall,
+                            duration: duration1,
                             isNabors: checkIsNabor(title, teacher, statusInfo)
                         });
 
@@ -158,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 title: title2,
                                 teacher: teacher2,
                                 hall: hall2,
+                                duration: duration2,
                                 isNabors: checkIsNabor(title2, teacher2, statusInfo2)
                             });
                         }
@@ -201,8 +216,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="block rounded-lg ${bgColor} px-2 py-1 text-white font-medium">
                                     ${item.id ? item.id + ' • ' : ''}${item.title}
                                 </span>
-                                <p class="text-[10px] md:text-xs text-textSoft leading-tight">
-                                    ${item.teacher}${item.hall ? ' • ' + item.hall : ''}
+                                <p class="text-[10px] md:text-xs text-textSoft leading-tight font-medium">
+                                    ${item.teacher}${item.hall ? ' • ' + item.hall : ''}${item.duration ? ' • ' + item.duration : ''}
                                 </p>
                                 ${item.isNabors ? '<span class="inline-block rounded-lg bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-300">Запись открыта</span>' : ''}
                             </div>
