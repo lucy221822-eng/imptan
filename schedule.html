@@ -35,8 +35,16 @@
       </nav>
     </header>
     <main class="relative z-10 mx-auto max-w-7xl px-4 pb-12 pt-8">
-      <h1 class="text-3xl font-black md:text-5xl neon-glow-text-white">Расписание занятий</h1>
-      <p class="mt-3 text-sm text-textSoft">Предварительная запись обязательна. Прием звонков: ПН-СБ 11:00-23:00. Первая тренировка от 10 руб. или бесплатно при покупке абонемента в день пробного занятия.</p>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h1 class="text-3xl font-black md:text-5xl neon-glow-text-white">Расписание занятий</h1>
+          <p class="mt-3 text-sm text-textSoft">Предварительная запись обязательна. Прием звонков: ПН-СБ 11:00-23:00. Первая тренировка от 10 руб. или бесплатно при покупке абонемента в день пробного занятия.</p>
+        </div>
+        <a href="schedule2.html" class="inline-flex items-center gap-2 rounded-xl border border-neon/30 bg-neon/10 px-5 py-3 text-sm font-bold text-white transition-all hover:bg-neon/20 hover:shadow-[0_0_15px_rgba(217,70,239,0.3)]">
+          <span>Новое расписание</span>
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+        </a>
+      </div>
       <section class="mt-8 card-surface p-3 md:p-5">
         <div class="mb-4 flex flex-wrap items-center gap-2 text-xs text-textSoft">
           <span class="rounded-full border border-white/20 px-3 py-1">Кальварийская, 25</span>

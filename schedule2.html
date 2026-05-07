@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Расписание занятий 2 | ИМПЕРИЯ ТАНЦА</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23d946ef%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7Z%22/><path d=%22M5 20h14%22/></svg>">
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{colors:{base:"#0f051a",textSoft:"#cab6db",neon:"#d946ef"}}}};</script>
+  </head>
+  <body class="bg-base text-white">
+    <div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div><div class="bg-noise"></div>
+    
+    <main class="relative z-10 mx-auto max-w-7xl px-4 pb-12 pt-8">
+      <h1 class="text-3xl font-black md:text-5xl neon-glow-text-white">Расписание занятий (Версия 2)</h1>
+      
+      <section class="mt-8 card-surface p-3 md:p-5">
+        <div class="mb-4 flex flex-wrap items-center gap-2 text-xs text-textSoft">
+          <span class="rounded-full border border-white/20 px-3 py-1">Кальварийская, 25</span>
+          <span class="rounded-full border border-white/20 px-3 py-1">Запись обязательна</span>
+          <span class="rounded-full border border-white/20 px-3 py-1">11:00–23:00</span>
+        </div>
+        <div class="overflow-x-auto rounded-xl border border-white/10 relative min-h-[400px]">
+          <div id="loadingOverlay" class="absolute inset-0 z-30 flex items-center justify-center bg-base/60 backdrop-blur-sm">
+            <div class="flex flex-col items-center gap-3">
+              <div class="h-10 w-10 animate-spin rounded-full border-4 border-neon border-t-transparent"></div>
+              <p class="text-sm font-medium text-textSoft">Загрузка расписания...</p>
+            </div>
+          </div>
+          <table class="w-full border-collapse text-sm">
+            <thead>
+              <tr class="bg-white/5 text-left">
+                <th class="p-2 md:p-3 font-semibold sticky left-0 bg-base z-20 border-r border-white/10">Время</th>
+                <th class="p-2 md:p-3 font-semibold text-center">Пн</th>
+                <th class="p-2 md:p-3 font-semibold text-center">Вт</th>
+                <th class="p-2 md:p-3 font-semibold text-center">Ср</th>
+                <th class="p-2 md:p-3 font-semibold text-center">Чт</th>
+                <th class="p-2 md:p-3 font-semibold text-center">Пт</th>
+                <th class="p-2 md:p-3 font-semibold text-center">Сб</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleBody" class="divide-y divide-white/10">
+              <!-- Данные будут загружены динамически -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="schedule2.js"></script>
+  </body>
+</html>
