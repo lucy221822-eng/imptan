@@ -123,25 +123,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         let hall = (detailRow[idx + 3] || detailRow[idx + 2] || '').trim();
 
                         let statusText = '';
+                        // Берем ЛЮБОЙ текст из ячейки L (индекс 11, смещение +9 от начала дня B=2)
                         const rawStatus = (classRow[idx + 9] || '').trim();
                         
-                        // Берем любые данные из ячейки статуса, если они не являются ID группы или названием
-                        if (rawStatus && !rawStatus.match(/^[A-Zа-я]?-\d+$/i) && rawStatus !== id && rawStatus !== title) {
+                        if (rawStatus) {
                             statusText = rawStatus;
+                            // Если там просто число, добавим " мест" для красоты, но в целом выводим всё как есть
                             if (statusText.match(/^\d+$/)) statusText += ' мест';
                         }
                         
-                        // Если в основной ячейке пусто, ищем ключевые слова в соседних
-                        if (!statusText) {
-                            for (let k = idx + 2; k <= idx + 10; k++) {
-                                const val = (classRow[k] || '').trim();
-                                if (val && (val.toLowerCase().includes('набор') || val.toLowerCase().includes('мест'))) {
-                                    statusText = val;
-                                    break;
-                                }
-                            }
-                        }
-
+                        // Поиск длительности
                         let duration = '';
                         for (let k = idx; k < idx + 6; k++) {
                             const val = (detailRow[k] || '').trim().toLowerCase();
