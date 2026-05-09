@@ -7,7 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23d946ef%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7Z%22/><path d=%22M5 20h14%22/></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -29,6 +29,8 @@
       .neon-glow-text-white {
         text-shadow: 0 0 20px rgba(255,255,255,0.3);
       }
+      /* Ускорение отрисовки: скрываем таблицу до готовности, если нет кэша */
+      #scheduleBody:empty { min-height: 500px; }
     </style>
   </head>
   <body class="bg-base text-white">
@@ -44,10 +46,10 @@
           <span class="rounded-full border border-white/20 px-3 py-1">11:00–23:00</span>
         </div>
         <div class="overflow-auto rounded-xl border border-white/10 relative max-h-[85vh]">
-          <div id="loadingOverlay" class="absolute inset-0 z-30 flex items-center justify-center bg-base/60 backdrop-blur-sm">
+          <div id="loadingOverlay" class="absolute inset-0 z-30 flex items-center justify-center bg-base/60 backdrop-blur-sm transition-opacity duration-300">
             <div class="flex flex-col items-center gap-3">
               <div class="h-10 w-10 animate-spin rounded-full border-4 border-neon border-t-transparent"></div>
-              <p class="text-sm font-medium text-textSoft">Загрузка расписания...</p>
+              <p class="text-sm font-medium text-textSoft">Загрузка...</p>
             </div>
           </div>
           <table class="w-full border-collapse text-sm">
@@ -70,6 +72,6 @@
       </section>
     </main>
 
-    <script src="schedule2.js"></script>
+    <script src="schedule2.js" defer></script>
   </body>
 </html>
