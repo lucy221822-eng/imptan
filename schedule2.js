@@ -6,52 +6,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingOverlay = document.getElementById('loadingOverlay');
 
     async function fetchSchedule() {
-        // 1. Мгновенно загружаем из кэша
         const cachedCSV = localStorage.getItem('schedule_csv_cache');
         if (cachedCSV) {
-            const data = parseCSV(cachedCSV);
-            renderSchedule(data);
-            loadingOverlay.classList.add('hidden');
-            console.log('MSR: Loaded from cache');
-        } else {
-            loadingOverlay.classList.remove('hidden');
+            try {
+                const data = parseCSV(cachedCSV);
+                if (data && data.length > 0) {
+                    renderSchedule(data);
+                    loadingOverlay.classList.add('hidden');
+                }
+            } catch (e) {
+                console.error('Cache parse error:', e);
+                localStorage.removeItem('schedule_csv_cache');
+            }
         }
 
-        // 2. Фоновое обновление данных
         const proxyUrl = 'https://api.allorigins.win/raw?url=';
         const targetUrl = encodeURIComponent(PUBLISHED_CSV_URL);
         
-        try {
-            const response = await fetch(PUBLISHED_CSV_URL);
-            if (!response.ok) throw new Error('Direct fetch failed');
-            const csvText = await response.text();
-            
-            if (csvText.includes('<!doctype html>')) throw new Error('HTML received');
+        const tryFetch = async (url) => {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const text = await response.text();
+            if (text.includes('<!doctype html>')) throw new Error('HTML instead of CSV');
+            return text;
+        };
 
-            // Сохраняем в кэш и рендерим, если данные изменились
-            if (csvText !== cachedCSV) {
+        try {
+            let csvText;
+            try {
+                csvText = await tryFetch(PUBLISHED_CSV_URL);
+            } catch (e) {
+                console.warn('Direct fetch failed, trying proxy...');
+                csvText = await tryFetch(`${proxyUrl}${targetUrl}`);
+            }
+
+            if (csvText && csvText !== cachedCSV) {
                 localStorage.setItem('schedule_csv_cache', csvText);
                 const data = parseCSV(csvText);
                 renderSchedule(data);
             }
             loadingOverlay.classList.add('hidden');
         } catch (error) {
-            console.warn('Direct fetch failed, trying proxy...');
-            try {
-                const response = await fetch(`${proxyUrl}${targetUrl}`);
-                const csvText = await response.text();
-                if (csvText !== cachedCSV) {
-                    localStorage.setItem('schedule_csv_cache', csvText);
-                    const data = parseCSV(csvText);
-                    renderSchedule(data);
-                }
-                loadingOverlay.classList.add('hidden');
-            } catch (proxyError) {
-                console.error('All fetch attempts failed');
-                if (!cachedCSV) {
-                    scheduleBody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-red-400">Ошибка загрузки</td></tr>`;
-                }
+            console.error('Fetch error:', error);
+            if (!cachedCSV) {
+                scheduleBody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-red-400">Ошибка загрузки. Проверьте соединение.</td></tr>`;
             }
+            loadingOverlay.classList.add('hidden');
         }
     }
 
@@ -123,16 +123,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         let hall = (detailRow[idx + 3] || detailRow[idx + 2] || '').trim();
 
                         let statusText = '';
-                        // Проверяем несколько ячеек вправо от названия группы (idx+2...idx+11)
-                        // По скриншоту "набор" в ячейке L, R, X и т.д.
-                        const potentialStatusIndices = [idx + 9, idx + 10, idx + 11, idx + 2, idx + 3];
-                        
-                        for (const k of potentialStatusIndices) {
-                            const val = (data[i + dataStartOffset + step][k] || '').trim();
-                            if (val && !val.match(/^[A-Zа-я]?-\d+$/i) && val !== id && val !== title && val.length < 25) {
-                                statusText = val;
-                                if (statusText.match(/^\d+$/)) statusText += ' мест';
-                                break;
+                        // Проверяем широкий диапазон ячеек вправо от названия группы (idx+2...idx+11)
+                        // Ищем любое непустое значение, которое не является ID или названием
+                        for (let k = idx + 2; k <= idx + 11; k++) {
+                            const val = (classRow[k] || '').trim();
+                            if (val && val.length > 1 && val.length < 25) {
+                                // Исключаем ID групп (типа C-10 или 128)
+                                if (!val.match(/^[A-Zа-я]?-\d+$/i) && val !== id && val !== title) {
+                                    statusText = val;
+                                    if (statusText.match(/^\d+$/)) statusText += ' мест';
+                                    break;
+                                }
                             }
                         }
                         
@@ -183,8 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         let statusBadge = '';
                         if (item.status) {
                             statusBadge = `
-                                <div class="absolute top-0 right-0 bottom-0 w-[18px] bg-gradient-to-b from-fuchsia-600 to-purple-600 flex items-center justify-center z-10 border-l border-white/10 shadow-sm">
-                                    <span class="text-white text-[8px] font-black uppercase tracking-widest whitespace-nowrap" style="writing-mode: vertical-rl; -webkit-writing-mode: vertical-rl; transform: rotate(180deg); display: block;">
+                                <div class="absolute top-0 right-0 bottom-0 w-[18px] bg-gradient-to-b from-fuchsia-600 to-purple-600 flex items-center justify-center z-10 border-l border-white/10 shadow-sm overflow-hidden">
+                                    <span class="text-white text-[8px] font-black uppercase tracking-widest whitespace-nowrap" style="writing-mode: vertical-rl; -webkit-writing-mode: vertical-rl; display: block; line-height: 18px; text-align: center;">
                                         ${item.status}
                                     </span>
                                 </div>
