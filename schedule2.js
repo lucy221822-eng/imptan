@@ -123,13 +123,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         let hall = (detailRow[idx + 3] || detailRow[idx + 2] || '').trim();
 
                         let statusText = '';
-                        // Берем ЛЮБОЙ текст из ячейки L (индекс 11, смещение +9 от начала дня B=2)
-                        const rawStatus = (classRow[idx + 9] || '').trim();
+                        // Проверяем несколько ячеек вправо от названия группы (idx+2...idx+11)
+                        // По скриншоту "набор" в ячейке L, R, X и т.д.
+                        const potentialStatusIndices = [idx + 9, idx + 10, idx + 11, idx + 2, idx + 3];
                         
-                        if (rawStatus) {
-                            statusText = rawStatus;
-                            // Если там просто число, добавим " мест" для красоты, но в целом выводим всё как есть
-                            if (statusText.match(/^\d+$/)) statusText += ' мест';
+                        for (const k of potentialStatusIndices) {
+                            const val = (data[i + dataStartOffset + step][k] || '').trim();
+                            if (val && !val.match(/^[A-Zа-я]?-\d+$/i) && val !== id && val !== title && val.length < 25) {
+                                statusText = val;
+                                if (statusText.match(/^\d+$/)) statusText += ' мест';
+                                break;
+                            }
                         }
                         
                         // Поиск длительности
@@ -175,11 +179,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     day.items.forEach(item => {
                         const bgStyle = getBgStyle(item.id || item.title);
+                        // Создаем вертикальную плашку у правого края
                         let statusBadge = '';
                         if (item.status) {
                             statusBadge = `
-                                <div class="absolute top-0 right-0 bottom-0 w-[18px] bg-gradient-to-b from-fuchsia-600 to-purple-600 flex items-center justify-center z-10 border-l border-white/10">
-                                    <span class="text-white text-[8px] font-black uppercase tracking-widest whitespace-nowrap" style="writing-mode: vertical-rl; transform: rotate(180deg);">
+                                <div class="absolute top-0 right-0 bottom-0 w-[18px] bg-gradient-to-b from-fuchsia-600 to-purple-600 flex items-center justify-center z-10 border-l border-white/10 shadow-sm">
+                                    <span class="text-white text-[8px] font-black uppercase tracking-widest whitespace-nowrap" style="writing-mode: vertical-rl; -webkit-writing-mode: vertical-rl; transform: rotate(180deg); display: block;">
                                         ${item.status}
                                     </span>
                                 </div>
