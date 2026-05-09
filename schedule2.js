@@ -108,9 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isDoubleTimeRow = nextRow[0] === time;
                 const dataStartOffset = isDoubleTimeRow ? 2 : 1;
 
-                // Индексы колонок по скриншоту: Пн(B), Вт(H), Ср(N), Чт(T), Пт(Z), Сб(AF)
-                // В JS индексы с 0: B=1, H=7, N=13, T=19, Z=25, AF=31
-                const dayIndices = [1, 7, 13, 19, 25, 31];
+                // Индексы колонок: Пн(2), Вт(8), Ср(14), Чт(20), Пт(26), Сб(32)
+                const dayIndices = [2, 8, 14, 20, 26, 32];
                 
                 dayIndices.forEach((idx, dayIdx) => {
                     const items = [];
@@ -129,18 +128,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         let statusText = '';
                         
                         // По скриншоту:
-                        // Понедельник: данные в B(1)-G(6), "набор" в L(11) -> idx+10
-                        // Вторник: данные в H(7)-M(12), "набор" в R(17) -> idx+10
-                        // И так далее. Проверим ячейку idx + 10
-                        const naborVal = (classRow[idx + 10] || '').trim();
+                        // Понедельник начинается с индекса 2. "набор" в колонке L (индекс 11).
+                        // Смещение: 11 - 2 = 9. Проверим ячейку idx + 9
+                        const naborVal = (classRow[idx + 9] || '').trim();
                         if (naborVal.toLowerCase().includes('набор') || /\d/.test(naborVal)) {
                             statusText = naborVal;
                             if (naborVal.match(/^\d+$/)) statusText += ' мест';
                         }
                         
-                        // Если в idx+10 пусто, на всякий случай проверим соседние (idx+2...idx+11)
+                        // Если в idx+9 пусто, на всякий случай проверим соседние (idx+2...idx+10)
                         if (!statusText) {
-                            for (let k = idx + 2; k <= idx + 11; k++) {
+                            for (let k = idx + 2; k <= idx + 10; k++) {
                                 const val = (classRow[k] || '').trim();
                                 if (val && val.toLowerCase().includes('набор')) {
                                     statusText = val;
@@ -202,14 +200,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     day.items.forEach(item => {
                         const bgStyle = getBgStyle(item.id || item.title);
                         
-                        // Создаем плашку в виде загнутого уголка (Ribbon)
+                        // Создаем вертикальную плашку у правого края
                         let statusBadge = '';
                         if (item.status) {
                             statusBadge = `
-                                <div class="absolute top-0 right-0 w-[45px] h-[45px] overflow-hidden pointer-events-none z-10">
-                                    <div class="absolute top-[8px] right-[-15px] w-[60px] bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white text-[7px] font-black py-0.5 text-center rotate-45 shadow-sm uppercase tracking-wider border-b border-black/20">
+                                <div class="absolute top-0 right-0 bottom-0 w-[18px] bg-gradient-to-b from-fuchsia-600 to-purple-600 flex items-center justify-center z-10 border-l border-white/10 shadow-sm">
+                                    <span class="text-white text-[8px] font-black uppercase tracking-widest whitespace-nowrap" style="writing-mode: vertical-rl; transform: rotate(180deg);">
                                         ${item.status}
-                                    </div>
+                                    </span>
                                 </div>
                             `;
                         }
@@ -217,12 +215,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         html += `
                             <div class="relative overflow-hidden rounded-lg p-2 shadow-lg border hover:border-white/50 transition-colors" style="${bgStyle}">
                                 ${statusBadge}
-                                <div class="mb-1 pr-8">
+                                <div class="mb-1 pr-5">
                                     <span class="text-[11px] font-black text-white leading-tight uppercase tracking-tight block">
                                         ${item.id ? item.id + ' • ' : ''}${item.title}
                                     </span>
                                 </div>
-                                <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-white/90 font-bold leading-tight pr-6">
+                                <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-white/90 font-bold leading-tight pr-5">
                                     <span class="opacity-100">${item.teacher}</span>
                                     ${item.hall ? `<span class="text-[9px] opacity-70 px-1 border border-white/20 rounded uppercase">${item.hall}</span>` : ''}
                                     ${item.duration ? `<span class="text-[9px] opacity-70 uppercase">${item.duration}</span>` : ''}
