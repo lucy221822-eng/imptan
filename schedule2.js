@@ -132,15 +132,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Удаляем предыдущую логику очистки, просто оставляем текст как есть
                         // hall = hall.replace(/ЗАЛ\s+/gi, '').trim();
 
-                        // Поиск статуса "набор" - теперь проверяем ячейку СРАЗУ ПОСЛЕ названия (idx + 2)
-                        let isNabor = false;
-                        const naborCell = (classRow[idx + 2] || '').trim().toLowerCase();
-                        if (naborCell.includes('набор')) isNabor = true;
-
-                        // Если не нашли в специальной ячейке, проверяем все связанные ячейки на всякий случай
-                        if (!isNabor) {
-                            const combinedText = `${id} ${title} ${teacher} ${naborCell}`.toLowerCase();
-                            if (combinedText.includes('набор')) isNabor = true;
+                        // Поиск статуса "набор" или свободных мест
+                        let statusText = '';
+                        
+                        // Проверяем ячейки в ряду с названием (от названия до начала следующего дня)
+                        for (let k = idx + 2; k < idx + 6; k++) {
+                            const val = (classRow[k] || '').trim();
+                            if (val && val.length > 1 && val.length < 25) {
+                                const lowVal = val.toLowerCase();
+                                // Если ячейка содержит ключевые слова или цифры (кроме ID группы)
+                                if (lowVal.includes('набор') || lowVal.includes('мест') || lowVal.includes('есть') || (/\d/.test(val) && val.length <= 3)) {
+                                    // Исключаем ID групп (типа C-10 или просто 128)
+                                    if (!val.match(/^[A-Zа-я]?-\d+$/i) && val !== id && val !== title) {
+                                        statusText = val;
+                                        if (val.match(/^\d+$/)) statusText += ' мест';
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        // Если ничего не нашли в спец. ячейках, ищем в тексте
+                        if (!statusText) {
+                            const combinedText = `${id} ${title} ${teacher}`.toLowerCase();
+                            if (combinedText.includes('набор')) statusText = 'набор';
+                            else if (combinedText.includes('мест')) {
+                                const match = combinedText.match(/(\d+)\s*мест/);
+                                if (match) statusText = match[0];
+                            }
                         }
 
                         // Поиск длительности
@@ -166,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         if (title || teacher || id) {
-                            items.push({ id, title, teacher, hall, duration, isNabors: isNabor });
+                            items.push({ id, title, teacher, hall, duration, status: statusText });
                         }
                     }
 
@@ -195,13 +214,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     day.items.forEach(item => {
                         const bgStyle = getBgStyle(item.id || item.title);
+                        
+                        // Определяем цвет плашки статуса
+                         let statusBadge = '';
+                         if (item.status) {
+                             const s = item.status.toLowerCase();
+                             let badgeClass = 'bg-emerald-600'; // Насыщенный зеленый
+                             
+                             if (s.includes('набор')) {
+                                 badgeClass = 'bg-emerald-600';
+                             } else if (/\d/.test(s) || s.includes('мест')) {
+                                 badgeClass = 'bg-amber-600';
+                             } else {
+                                 badgeClass = 'bg-blue-600';
+                             }
+                             
+                             statusBadge = `<span class="shrink-0 ${badgeClass} text-[9px] font-bold px-2 py-0.5 rounded-full text-white uppercase tracking-tight shadow-md border border-white/20 whitespace-nowrap">${item.status}</span>`;
+                         }
+
                         html += `
                             <div class="relative overflow-hidden rounded-lg p-2 shadow-lg border hover:border-white/50 transition-colors" style="${bgStyle}">
                                 <div class="flex items-start justify-between gap-1 mb-1">
                                     <span class="text-[11px] font-black text-white leading-tight uppercase tracking-tight">
                                         ${item.id ? item.id + ' • ' : ''}${item.title}
                                     </span>
-                                    ${item.isNabors ? '<span class="shrink-0 bg-emerald-500 text-[8px] font-black px-1 py-0.5 rounded text-white uppercase tracking-tighter">набор</span>' : ''}
+                                    ${statusBadge}
                                 </div>
                                 <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-white/90 font-bold leading-tight">
                                     <span class="opacity-100">${item.teacher}</span>
