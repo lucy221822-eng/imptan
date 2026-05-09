@@ -246,8 +246,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const groupNumber = groupMatch ? parseInt(groupMatch[0]) : 0;
         
         // Логика золотого угла для максимального контраста соседних номеров
+        // Сдвигаем базовый тон на 120 градусов
         const goldenAngle = 137.5;
-        const hue = (groupNumber * goldenAngle) % 360;
+        const hue = (120 + groupNumber * goldenAngle) % 360;
         const saturation = 70;
         const lightness = 60;
         
