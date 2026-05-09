@@ -206,8 +206,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         let statusBadge = '';
                         if (item.status) {
                             statusBadge = `
-                                <div class="absolute top-0 right-0 w-[60px] h-[60px] overflow-hidden pointer-events-none z-10">
-                                    <div class="absolute top-[12px] right-[-20px] w-[85px] bg-fuchsia-800 text-white text-[8px] font-black py-0.5 text-center rotate-45 shadow-[0_0_12px_rgba(217,70,239,0.6)] uppercase tracking-widest border-t border-white/20 border-b border-black/30">
+                                <div class="absolute top-0 right-0 w-[45px] h-[45px] overflow-hidden pointer-events-none z-10">
+                                    <div class="absolute top-[8px] right-[-15px] w-[60px] bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white text-[7px] font-black py-0.5 text-center rotate-45 shadow-sm uppercase tracking-wider border-b border-black/20">
                                         ${item.status}
                                     </div>
                                 </div>
@@ -217,12 +217,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         html += `
                             <div class="relative overflow-hidden rounded-lg p-2 shadow-lg border hover:border-white/50 transition-colors" style="${bgStyle}">
                                 ${statusBadge}
-                                <div class="mb-1">
-                                    <span class="text-[11px] font-black text-white leading-tight uppercase tracking-tight pr-6 block">
+                                <div class="mb-1 pr-8">
+                                    <span class="text-[11px] font-black text-white leading-tight uppercase tracking-tight block">
                                         ${item.id ? item.id + ' • ' : ''}${item.title}
                                     </span>
                                 </div>
-                                <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-white/90 font-bold leading-tight">
+                                <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-white/90 font-bold leading-tight pr-6">
                                     <span class="opacity-100">${item.teacher}</span>
                                     ${item.hall ? `<span class="text-[9px] opacity-70 px-1 border border-white/20 rounded uppercase">${item.hall}</span>` : ''}
                                     ${item.duration ? `<span class="text-[9px] opacity-70 uppercase">${item.duration}</span>` : ''}
