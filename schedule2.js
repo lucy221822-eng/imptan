@@ -6,20 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingOverlay = document.getElementById('loadingOverlay');
 
     async function fetchSchedule() {
-        // Пытаемся загрузить из кэша для мгновенного отображения
-        const cachedData = localStorage.getItem('schedule_cache');
-        if (cachedData) {
-            try {
-                const data = JSON.parse(cachedData);
-                renderSchedule(data);
-                console.log('Loaded from cache');
-                loadingOverlay.classList.add('hidden');
-            } catch (e) {
-                console.error('Cache error:', e);
-            }
-        } else {
-            loadingOverlay.classList.remove('hidden');
-        }
+        loadingOverlay.classList.remove('hidden');
         
         // Используем CORS-прокси для обхода ограничений, если файл открыт локально (через file://)
         const proxyUrl = 'https://api.allorigins.win/raw?url=';
@@ -46,9 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = parseCSV(csvText);
                 if (data.length < 2) throw new Error('Получена пустая таблица');
 
-                // Сохраняем в кэш
-                localStorage.setItem('schedule_cache', JSON.stringify(data));
-                
                 renderSchedule(data);
                 loadingOverlay.classList.add('hidden');
                 console.log('Successfully loaded schedule');
@@ -59,16 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (!cachedData) {
-            scheduleBody.innerHTML = `<tr><td colspan="7" class="p-8 text-center">
-                <div class="text-red-400 font-bold mb-2">Не удалось загрузить данные</div>
-                <div class="text-sm text-textSoft mb-4">Ошибка: ${lastError.message}</div>
-                <button onclick="location.reload()" class="bg-neon/20 hover:bg-neon/40 border border-neon/50 px-4 py-2 rounded-lg text-xs transition-colors">
-                    Обновить страницу
-                </button>
-            </td></tr>`;
-            loadingOverlay.classList.add('hidden');
-        }
+        scheduleBody.innerHTML = `<tr><td colspan="7" class="p-8 text-center">
+            <div class="text-red-400 font-bold mb-2">Не удалось загрузить данные</div>
+            <div class="text-sm text-textSoft mb-4">Ошибка: ${lastError.message}</div>
+            <button onclick="location.reload()" class="bg-neon/20 hover:bg-neon/40 border border-neon/50 px-4 py-2 rounded-lg text-xs transition-colors">
+                Обновить страницу
+            </button>
+        </td></tr>`;
+        loadingOverlay.classList.add('hidden');
     }
 
     function parseCSV(text) {
