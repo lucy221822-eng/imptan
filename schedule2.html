@@ -5,10 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Расписание занятий 2 | ИМПЕРИЯ ТАНЦА</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23d946ef%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7Z%22/><path d=%22M5 20h14%22/></svg>">
+    
+    <!-- Преконнект к источникам данных и шрифтов -->
+    <link rel="preconnect" href="https://docs.google.com">
+    <link rel="preconnect" href="https://api.allorigins.win">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <style>
+      /* Критический CSS для мгновенной отрисовки каркаса */
+      :root { --base: #0f051a; --textSoft: #cab6db; --neon: #d946ef; }
+      body { background: var(--base); color: white; margin: 0; font-family: sans-serif; overflow-x: hidden; }
+      .bg-orb { position: fixed; width: 40rem; height: 40rem; border-radius: 50%; filter: blur(100px); opacity: 0.15; z-index: -1; pointer-events: none; }
+      .bg-orb-1 { top: -10rem; left: -10rem; background: rgba(217, 70, 239, 0.4); }
+      .bg-orb-2 { bottom: -10rem; right: -10rem; background: rgba(124, 58, 237, 0.4); }
+      .card-surface { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; backdrop-filter: blur(10px); }
+      .loading-spinner { width: 40px; height: 40px; border: 4px solid var(--neon); border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      .sticky-header { position: sticky; top: 0; z-index: 30; background: var(--base); }
+    </style>
+
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="styles.css" />
+    
+    <!-- Tailwind с оптимизацией -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {

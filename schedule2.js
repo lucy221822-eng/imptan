@@ -94,11 +94,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderSchedule(data) {
-        const fragment = document.createDocumentFragment();
+        if (!data || data.length === 0) return;
         
+        const fragment = document.createDocumentFragment();
         const timeSlots = [];
-        // ... (логика обработки data остается прежней)
-        for (let i = 0; i < data.length; i++) {
+        
+        // Предварительная обработка данных для уменьшения нагрузки на основной поток
+        for (let i = 0, len = data.length; i < len; i++) {
             const row = data[i];
             const timeMatch = row[0] && row[0].match(/^(\d{1,2}:\d{2})$/);
             
