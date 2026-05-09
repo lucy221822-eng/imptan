@@ -149,13 +149,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Поиск статуса "набор" или свободных мест
                         let statusText = '';
                         
-                        // Берем данные ТОЛЬКО из ячейки, которая идет сразу после названия группы (idx + 2)
-                        const naborCell = (classRow[idx + 2] || '').trim();
-                        if (naborCell && naborCell.length > 1 && naborCell.length < 20) {
-                            // Исключаем ID групп (типа C-10)
-                            if (!naborCell.match(/^[A-Zа-я]?-\d+$/i) && naborCell !== title) {
-                                statusText = naborCell;
-                                if (naborCell.match(/^\d+$/)) statusText += ' мест';
+                        // Проверяем ячейки после названия группы (до 4 ячеек вперед: idx+2, idx+3, idx+4, idx+5)
+                        for (let k = idx + 2; k <= idx + 5; k++) {
+                            const val = (classRow[k] || '').trim();
+                            if (val && val.length > 1 && val.length < 20) {
+                                // Исключаем ID групп (типа C-10) и повторы названия
+                                if (!val.match(/^[A-Zа-я]?-\d+$/i) && val !== title) {
+                                    statusText = val;
+                                    if (val.match(/^\d+$/)) statusText += ' мест';
+                                    break; // Нашли первый подходящий статус и выходим из цикла
+                                }
                             }
                         }
 
