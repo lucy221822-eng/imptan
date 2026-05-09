@@ -108,14 +108,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isDoubleTimeRow = nextRow[0] === time;
                 const dataStartOffset = isDoubleTimeRow ? 2 : 1;
 
-                // Индексы колонок: Пн(2), Вт(8), Ср(14), Чт(20), Пт(26), Сб(32)
-                const dayIndices = [2, 8, 14, 20, 26, 32];
+                // Индексы колонок по скриншоту: Пн(B), Вт(H), Ср(N), Чт(T), Пт(Z), Сб(AF)
+                // В JS индексы с 0: B=1, H=7, N=13, T=19, Z=25, AF=31
+                const dayIndices = [1, 7, 13, 19, 25, 31];
                 
                 dayIndices.forEach((idx, dayIdx) => {
                     const items = [];
                     
                     // Проверяем несколько пар строк под временем
-                    // Для 18:30 данных больше, поэтому проверяем до 6 строк (3 пары)
                     for (let step = 0; step < 6; step += 2) {
                         const classRow = data[i + dataStartOffset + step] || [];
                         const detailRow = data[i + dataStartOffset + step + 1] || [];
@@ -124,22 +124,27 @@ document.addEventListener('DOMContentLoaded', () => {
                         let title = (classRow[idx + 1] || '').trim();
                         let teacher = (detailRow[idx + 1] || '').trim();
                         let hall = (detailRow[idx + 3] || detailRow[idx + 2] || '').trim();
-                        
-                        // Удаляем предыдущую логику очистки, просто оставляем текст как есть
-                        // hall = hall.replace(/ЗАЛ\s+/gi, '').trim();
 
                         // Поиск статуса "набор" или свободных мест
                         let statusText = '';
                         
-                        // Проверяем ячейки после названия группы (до 4 ячеек вперед: idx+2, idx+3, idx+4, idx+5)
-                        for (let k = idx + 2; k <= idx + 5; k++) {
-                            const val = (classRow[k] || '').trim();
-                            if (val && val.length > 1 && val.length < 20) {
-                                // Исключаем ID групп (типа C-10) и повторы названия
-                                if (!val.match(/^[A-Zа-я]?-\d+$/i) && val !== title) {
+                        // По скриншоту:
+                        // Понедельник: данные в B(1)-G(6), "набор" в L(11) -> idx+10
+                        // Вторник: данные в H(7)-M(12), "набор" в R(17) -> idx+10
+                        // И так далее. Проверим ячейку idx + 10
+                        const naborVal = (classRow[idx + 10] || '').trim();
+                        if (naborVal.toLowerCase().includes('набор') || /\d/.test(naborVal)) {
+                            statusText = naborVal;
+                            if (naborVal.match(/^\d+$/)) statusText += ' мест';
+                        }
+                        
+                        // Если в idx+10 пусто, на всякий случай проверим соседние (idx+2...idx+11)
+                        if (!statusText) {
+                            for (let k = idx + 2; k <= idx + 11; k++) {
+                                const val = (classRow[k] || '').trim();
+                                if (val && val.toLowerCase().includes('набор')) {
                                     statusText = val;
-                                    if (val.match(/^\d+$/)) statusText += ' мест';
-                                    break; // Нашли первый подходящий статус и выходим из цикла
+                                    break;
                                 }
                             }
                         }
