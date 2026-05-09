@@ -135,16 +135,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Поиск статуса
                         let statusText = '';
-                        // Уменьшаем диапазон поиска на 2 ячейки (было idx+11, стало idx+9),
-                        // чтобы не захватывать ID группы следующего дня.
-                        for (let k = idx + 2; k <= idx + 9; k++) {
-                            const val = (classRow[k] || '').trim();
-                            if (val && val.length > 1 && val.length < 25) {
-                                if (!val.match(/^[A-Zа-я]?-\d+$/i) && val !== id && val !== title) {
-                                    statusText = val;
-                                    if (statusText.match(/^\d+$/)) statusText += ' мест';
-                                    break;
-                                }
+                        // Каждый день занимает 6 колонок. Статус — это ПОСЛЕДНЯЯ (6-я) колонка дня.
+                        // Пн: B(1)-G(6), статус в G(6) -> idx + 4 (так как idx начинается с B=2 в коде)
+                        // СТОП: В коде dayIndices = [2, 8, 14, 20, 26, 32] (это колонки C, I, O, U, AA, AG - где Название)
+                        // Значит статус для Пн должен быть в G (индекс 6). Смещение от C(2) до G(6) = +4.
+                        
+                        const statusIdx = idx + 4; 
+                        const val = (classRow[statusIdx] || '').trim();
+                        
+                        if (val && val.length > 0 && val.length < 15) {
+                            // Исключаем любые намеки на ID групп (числа или формат X-00)
+                            if (!val.match(/^\d+$/) && !val.match(/^[A-Zа-я]?-\d+$/i)) {
+                                statusText = val;
                             }
                         }
 
