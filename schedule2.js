@@ -123,15 +123,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         let hall = (detailRow[idx + 3] || detailRow[idx + 2] || '').trim();
 
                         let statusText = '';
-                        const naborVal = (classRow[idx + 9] || '').trim();
-                        if (naborVal.toLowerCase().includes('набор') || /\d/.test(naborVal)) {
-                            statusText = naborVal;
-                            if (naborVal.match(/^\d+$/)) statusText += ' мест';
+                        const rawStatus = (classRow[idx + 9] || '').trim();
+                        
+                        // Берем любые данные из ячейки статуса, если они не являются ID группы или названием
+                        if (rawStatus && !rawStatus.match(/^[A-Zа-я]?-\d+$/i) && rawStatus !== id && rawStatus !== title) {
+                            statusText = rawStatus;
+                            if (statusText.match(/^\d+$/)) statusText += ' мест';
                         }
+                        
+                        // Если в основной ячейке пусто, ищем ключевые слова в соседних
                         if (!statusText) {
                             for (let k = idx + 2; k <= idx + 10; k++) {
                                 const val = (classRow[k] || '').trim();
-                                if (val && val.toLowerCase().includes('набор')) {
+                                if (val && (val.toLowerCase().includes('набор') || val.toLowerCase().includes('мест'))) {
                                     statusText = val;
                                     break;
                                 }
