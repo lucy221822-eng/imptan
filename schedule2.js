@@ -149,41 +149,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Поиск статуса "набор" или свободных мест
                         let statusText = '';
                         
-                        // Проверяем ячейки в ряду с названием (от названия до начала следующего дня)
-                        for (let k = idx + 2; k < idx + 8; k++) {
-                            const val = (classRow[k] || '').trim();
-                            if (val && val.length > 1 && val.length < 30) {
-                                const lowVal = val.toLowerCase();
-                                // Если ячейка содержит ключевые слова или цифры (кроме ID группы)
-                                if (lowVal.includes('набор') || lowVal.includes('мест') || lowVal.includes('есть') || (/\d/.test(val) && val.length <= 3)) {
-                                    // Исключаем ID групп (типа C-10 или просто 128)
-                                    if (!val.match(/^[A-Zа-я]?-\d+$/i) && val !== id && val !== title) {
-                                        statusText = val;
-                                        if (val.match(/^\d+$/)) statusText += ' мест';
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        
-                        // Дополнительная проверка: если в ячейке просто "набор" или похожие слова
-                        if (!statusText) {
-                            for (let k = idx + 1; k < idx + 8; k++) {
-                                const val = (classRow[k] || '').trim().toLowerCase();
-                                if (val === 'набор' || val === 'есть места') {
-                                    statusText = val;
-                                    break;
-                                }
-                            }
-                        }
-                        
-                        // Если ничего не нашли в спец. ячейках, ищем в тексте основного блока
-                        if (!statusText) {
-                            const combinedText = `${id} ${title} ${teacher}`.toLowerCase();
-                            if (combinedText.includes('набор')) statusText = 'набор';
-                            else if (combinedText.includes('мест')) {
-                                const match = combinedText.match(/(\d+)\s*мест/);
-                                if (match) statusText = match[0];
+                        // Берем данные ТОЛЬКО из ячейки, которая идет сразу после названия группы (idx + 2)
+                        const naborCell = (classRow[idx + 2] || '').trim();
+                        if (naborCell && naborCell.length > 1 && naborCell.length < 20) {
+                            // Исключаем ID групп (типа C-10)
+                            if (!naborCell.match(/^[A-Zа-я]?-\d+$/i) && naborCell !== title) {
+                                statusText = naborCell;
+                                if (naborCell.match(/^\d+$/)) statusText += ' мест';
                             }
                         }
 
@@ -244,8 +216,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         let statusBadge = '';
                         if (item.status) {
                             statusBadge = `
-                                <div style="position: absolute; top: 0; right: 0; width: 50px; height: 50px; overflow: hidden; pointer-events: none; z-index: 10;">
-                                    <div style="position: absolute; top: 7px; right: -15px; width: 60px; background: #d946ef; color: #0f051a; font-size: 7px; font-weight: 900; padding: 2px 0; text-align: center; transform: rotate(45deg); box-shadow: 0 2px 4px rgba(0,0,0,0.3); text-transform: uppercase; letter-spacing: -0.02em; border-top: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(0,0,0,0.1);">
+                                <div class="absolute top-0 right-0 w-[60px] h-[60px] overflow-hidden pointer-events-none z-10">
+                                    <div class="absolute top-[12px] right-[-20px] w-[85px] bg-fuchsia-800 text-white text-[8px] font-black py-0.5 text-center rotate-45 shadow-[0_0_12px_rgba(217,70,239,0.6)] uppercase tracking-widest border-t border-white/20 border-b border-black/30">
                                         ${item.status}
                                     </div>
                                 </div>
