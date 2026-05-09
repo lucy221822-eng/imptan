@@ -202,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-white/80 font-bold leading-tight pr-5">
                                     <span>${item.teacher}</span>
                                     ${item.hall ? `<span class="text-[9px] opacity-60 px-1 border border-white/10 rounded uppercase">${item.hall}</span>` : ''}
+                                    ${item.duration ? `<span class="text-[9px] opacity-60 uppercase">${item.duration}</span>` : ''}
                                 </div>
                             </div>
                         `;
