@@ -6,7 +6,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingOverlay = document.getElementById('loadingOverlay');
 
     async function fetchSchedule() {
-        loadingOverlay.classList.remove('hidden');
+        // Пытаемся загрузить из кэша для мгновенного отображения
+        const cachedData = localStorage.getItem('schedule_cache');
+        if (cachedData) {
+            try {
+                const data = JSON.parse(cachedData);
+                renderSchedule(data);
+                console.log('Loaded from cache');
+                loadingOverlay.classList.add('hidden');
+            } catch (e) {
+                console.error('Cache error:', e);
+            }
+        } else {
+            loadingOverlay.classList.remove('hidden');
+        }
         
         // Используем CORS-прокси для обхода ограничений, если файл открыт локально (через file://)
         const proxyUrl = 'https://api.allorigins.win/raw?url=';
@@ -33,6 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = parseCSV(csvText);
                 if (data.length < 2) throw new Error('Получена пустая таблица');
 
+                // Сохраняем в кэш
+                localStorage.setItem('schedule_cache', JSON.stringify(data));
+                
                 renderSchedule(data);
                 loadingOverlay.classList.add('hidden');
                 console.log('Successfully loaded schedule');
@@ -43,18 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        scheduleBody.innerHTML = `<tr><td colspan="7" class="p-8 text-center">
-            <div class="text-red-400 font-bold mb-2">Не удалось загрузить данные</div>
-            <div class="text-sm text-textSoft mb-4">Ошибка: ${lastError.message}</div>
-            <div class="text-xs text-textSoft mb-4 italic">
-                Если вы открыли файл просто двойным кликом, браузер может блокировать загрузку. <br>
-                Попробуйте открыть через локальный сервер или загрузить на хостинг.
-            </div>
-            <button onclick="location.reload()" class="bg-neon/20 hover:bg-neon/40 border border-neon/50 px-4 py-2 rounded-lg text-xs transition-colors">
-                Обновить страницу
-            </button>
-        </td></tr>`;
-        loadingOverlay.classList.add('hidden');
+        if (!cachedData) {
+            scheduleBody.innerHTML = `<tr><td colspan="7" class="p-8 text-center">
+                <div class="text-red-400 font-bold mb-2">Не удалось загрузить данные</div>
+                <div class="text-sm text-textSoft mb-4">Ошибка: ${lastError.message}</div>
+                <button onclick="location.reload()" class="bg-neon/20 hover:bg-neon/40 border border-neon/50 px-4 py-2 rounded-lg text-xs transition-colors">
+                    Обновить страницу
+                </button>
+            </td></tr>`;
+            loadingOverlay.classList.add('hidden');
+        }
     }
 
     function parseCSV(text) {
@@ -136,9 +150,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         let statusText = '';
                         
                         // Проверяем ячейки в ряду с названием (от названия до начала следующего дня)
-                        for (let k = idx + 2; k < idx + 6; k++) {
+                        for (let k = idx + 2; k < idx + 8; k++) {
                             const val = (classRow[k] || '').trim();
-                            if (val && val.length > 1 && val.length < 25) {
+                            if (val && val.length > 1 && val.length < 30) {
                                 const lowVal = val.toLowerCase();
                                 // Если ячейка содержит ключевые слова или цифры (кроме ID группы)
                                 if (lowVal.includes('набор') || lowVal.includes('мест') || lowVal.includes('есть') || (/\d/.test(val) && val.length <= 3)) {
@@ -152,7 +166,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         }
                         
-                        // Если ничего не нашли в спец. ячейках, ищем в тексте
+                        // Дополнительная проверка: если в ячейке просто "набор" или похожие слова
+                        if (!statusText) {
+                            for (let k = idx + 1; k < idx + 8; k++) {
+                                const val = (classRow[k] || '').trim().toLowerCase();
+                                if (val === 'набор' || val === 'есть места') {
+                                    statusText = val;
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        // Если ничего не нашли в спец. ячейках, ищем в тексте основного блока
                         if (!statusText) {
                             const combinedText = `${id} ${title} ${teacher}`.toLowerCase();
                             if (combinedText.includes('набор')) statusText = 'набор';
@@ -219,8 +244,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         let statusBadge = '';
                         if (item.status) {
                             statusBadge = `
-                                <div class="absolute top-0 right-0 w-12 h-12 overflow-hidden pointer-events-none z-10">
-                                    <div class="absolute top-[6px] right-[-18px] w-[60px] bg-[#d946ef] text-[#0f051a] text-[7px] font-black py-0.5 text-center rotate-45 shadow-md uppercase tracking-tighter border-y border-white/20">
+                                <div style="position: absolute; top: 0; right: 0; width: 50px; height: 50px; overflow: hidden; pointer-events: none; z-index: 10;">
+                                    <div style="position: absolute; top: 7px; right: -15px; width: 60px; background: #d946ef; color: #0f051a; font-size: 7px; font-weight: 900; padding: 2px 0; text-align: center; transform: rotate(45deg); box-shadow: 0 2px 4px rgba(0,0,0,0.3); text-transform: uppercase; letter-spacing: -0.02em; border-top: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(0,0,0,0.1);">
                                         ${item.status}
                                     </div>
                                 </div>
