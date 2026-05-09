@@ -215,30 +215,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     day.items.forEach(item => {
                         const bgStyle = getBgStyle(item.id || item.title);
                         
-                        // Определяем цвет плашки статуса
-                         let statusBadge = '';
-                         if (item.status) {
-                             const s = item.status.toLowerCase();
-                             let badgeClass = 'bg-emerald-600'; // Насыщенный зеленый
-                             
-                             if (s.includes('набор')) {
-                                 badgeClass = 'bg-emerald-600';
-                             } else if (/\d/.test(s) || s.includes('мест')) {
-                                 badgeClass = 'bg-amber-600';
-                             } else {
-                                 badgeClass = 'bg-blue-600';
-                             }
-                             
-                             statusBadge = `<span class="shrink-0 ${badgeClass} text-[9px] font-bold px-2 py-0.5 rounded-full text-white uppercase tracking-tight shadow-md border border-white/20 whitespace-nowrap">${item.status}</span>`;
-                         }
+                        // Создаем плашку в виде загнутого уголка (Ribbon)
+                        let statusBadge = '';
+                        if (item.status) {
+                            statusBadge = `
+                                <div class="absolute top-0 right-0 w-12 h-12 overflow-hidden pointer-events-none z-10">
+                                    <div class="absolute top-[6px] right-[-18px] w-[60px] bg-[#d946ef] text-[#0f051a] text-[7px] font-black py-0.5 text-center rotate-45 shadow-md uppercase tracking-tighter border-y border-white/20">
+                                        ${item.status}
+                                    </div>
+                                </div>
+                            `;
+                        }
 
                         html += `
                             <div class="relative overflow-hidden rounded-lg p-2 shadow-lg border hover:border-white/50 transition-colors" style="${bgStyle}">
-                                <div class="flex items-start justify-between gap-1 mb-1">
-                                    <span class="text-[11px] font-black text-white leading-tight uppercase tracking-tight">
+                                ${statusBadge}
+                                <div class="mb-1">
+                                    <span class="text-[11px] font-black text-white leading-tight uppercase tracking-tight pr-6 block">
                                         ${item.id ? item.id + ' • ' : ''}${item.title}
                                     </span>
-                                    ${statusBadge}
                                 </div>
                                 <div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-white/90 font-bold leading-tight">
                                     <span class="opacity-100">${item.teacher}</span>
