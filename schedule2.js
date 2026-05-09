@@ -241,30 +241,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function getBgStyle(text) {
         const t = (text || '').trim().toLowerCase();
         
-        // Извлекаем номер группы (число от 100 до 399)
+        // Извлекаем номер группы
         const groupMatch = t.match(/\d+/);
         const groupNumber = groupMatch ? parseInt(groupMatch[0]) : 0;
         
-        let hue = 0;
-        
-        // Новая схема распределения цветов по сериям групп:
-         // 100-я серия (111-129): Сине-фиолетовая гамма
-         // 200-я серия (211-229): Розово-пурпурная гамма
-         // 300-я серия (311-329): Бирюзово-зеленая гамма
-         
-         if (groupNumber >= 100 && groupNumber < 200) {
-             // Базовый тон 220 (Синий) + смещение внутри серии
-             hue = 220 + ((groupNumber % 100) * 12); 
-         } else if (groupNumber >= 200 && groupNumber < 300) {
-             // Базовый тон 280 (Маджента) + смещение внутри серии
-             hue = 280 + ((groupNumber % 100) * 12);
-         } else if (groupNumber >= 300 && groupNumber < 400) {
-             // Базовый тон 150 (Бирюзовый) + смещение внутри серии
-             hue = 150 + ((groupNumber % 100) * 12);
-         } else {
-             // Для остальных используем старую логику с золотым углом
-             hue = (groupNumber * 137.5) % 360;
-         }
+        // Используем логику золотого угла (137.5°) для всего спектра (360°)
+        // Это гарантирует, что даже соседние номера (например, 111 и 112) 
+        // будут иметь максимально контрастные цвета, распределенные по всему кругу.
+        const goldenAngle = 137.5;
+        const hue = (groupNumber * goldenAngle) % 360;
         
         const saturation = 70;
         const lightness = 60;
